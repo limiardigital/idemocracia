@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.8.0" last-position="828,0" last-zoom="1"
+	 default-schema="public" default-owner="postgres">
+<database name="idemocracia">
+	<prepended-sql><![CDATA[CREATE EXTENSION IF NOT EXISTS "uuid-ossp";]]></prepended-sql>
+</database>
+
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="tse" rect-visible="true" fill-color="#00aa00">
+	<role name="postgres"/>
+</schema>
+
+<table name="fonte">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar a "Fonte".]]></comment>
+	<position x="75.3333" y="111.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="sigla">
+		<type name="text" length="255"/>
+	</column>
+	<column name="descricao">
+		<type name="text" length="255"/>
+	</column>
+	<column name="url">
+		<type name="text"/>
+	</column>
+	<column name="repositorio_url">
+		<type name="text"/>
+	</column>
+	<column name="obtencao_data_hora">
+		<type name="timestamp"/>
+	</column>
+	<column name="importacao_data_hora">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="pk_fonte" type="pk-constr" table="tse.fonte">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="coligacao_partidaria">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Coligaçao Partidaria".]]></comment>
+	<position x="839.333" y="63.2222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_sequencial_coligacao">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome">
+		<type name="text"/>
+	</column>
+	<column name="tse_tipo_descricao">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_coligacao_partidaria" type="pk-constr" table="tse.coligacao_partidaria">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_coligacao_partidaria_0001" table="tse.coligacao_partidaria"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<table name="partido">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Partido".]]></comment>
+	<position x="1662.33" y="61.2222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_numero">
+		<type name="text"/>
+	</column>
+	<column name="tse_sigla">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_partido" type="pk-constr" table="tse.partido">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="coligacao_partidaria_partido">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar a ligaçao "Coligaçao Partidaria" e "Partido".]]></comment>
+	<position x="1247.33" y="60.2222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_coligacao_partidaria" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="id_partido" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<constraint name="pk_coligacao_partidaria_partido" type="pk-constr" table="tse.coligacao_partidaria_partido">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_fonte_0001" table="tse.fonte"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="repositorio_url"/>
+		</idxelement>
+</index>
+
+<index name="uix_coligacao_partidaria_0001" table="tse.coligacao_partidaria"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_coligacao_partidaria_partido_0001" table="tse.coligacao_partidaria_partido"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_coligacao_partidaria"/>
+		</idxelement>
+</index>
+
+<index name="ix_coligacao_partidaria_partido_0002" table="tse.coligacao_partidaria_partido"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_partido"/>
+		</idxelement>
+</index>
+
+<index name="ix_partido_0001" table="tse.partido"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_numero"/>
+		</idxelement>
+</index>
+
+<table name="fonte_referencia">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar a ligaçao "Fonte" e demais entidades".]]></comment>
+	<position x="72.3333" y="446.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_fonte" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="id_coligacao_partidaria">
+		<type name="uuid"/>
+	</column>
+	<column name="id_coligacao_partidaria_composicao">
+		<type name="uuid"/>
+	</column>
+	<column name="id_partido">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_geral">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_regional">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pessoa_fisica">
+		<type name="uuid"/>
+	</column>
+	<column name="id_cargo">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pais">
+		<type name="uuid"/>
+	</column>
+	<column name="id_unidade_federativa">
+		<type name="uuid"/>
+	</column>
+	<column name="id_municipio">
+		<type name="uuid"/>
+	</column>
+	<column name="id_candidatura">
+		<type name="uuid"/>
+	</column>
+	<column name="id_candidatura_bem">
+		<type name="uuid"/>
+	</column>
+	<column name="id_candidatura_motivo_cassacao">
+		<type name="uuid"/>
+	</column>
+	<column name="id_motivo_cassacao">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_geral_cargo">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_regional_cargo">
+		<type name="uuid"/>
+	</column>
+	<column name="registro">
+		<type name="varchar" length="255"/>
+	</column>
+	<constraint name="pk_fonte_referencia" type="pk-constr" table="tse.fonte_referencia">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="pleito_geral">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Pleito Geral".]]></comment>
+	<position x="838.667" y="454.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_turno">
+		<type name="text"/>
+	</column>
+	<column name="tse_data_hora">
+		<type name="timestamp"/>
+	</column>
+	<column name="tse_tipo_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_tipo_descricao">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_pleito_geral" type="pk-constr" table="tse.pleito_geral">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="uix_partido_0001" table="tse.partido"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0001" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_fonte"/>
+		</idxelement>
+</index>
+
+<table name="pleito_regional">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Pleito Regional".]]></comment>
+	<position x="835.67" y="657.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_geral">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_abragencia_tipo_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_turno">
+		<type name="text"/>
+	</column>
+	<column name="tse_data_hora">
+		<type name="timestamp"/>
+	</column>
+	<column name="tse_tipo_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_tipo_descricao">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_pleito_regional" type="pk-constr" table="tse.pleito_regional">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_pleito_geral_0001" table="tse.pleito_geral"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="uix_pleito_geral_0001" table="tse.pleito_geral"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_pleito_regional_0001" table="tse.pleito_regional"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="uix_pleito_regional_0001" table="tse.pleito_regional"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0002" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_coligacao_partidaria"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0003" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_coligacao_partidaria_composicao"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0004" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_partido"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0005" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_geral"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0006" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_regional"/>
+		</idxelement>
+</index>
+
+<table name="candidatura">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Candidatura".]]></comment>
+	<position x="1649.67" y="648.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_geral">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_regional">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pessoa_fisica">
+		<type name="uuid"/>
+	</column>
+	<column name="id_cargo">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pais">
+		<type name="uuid"/>
+	</column>
+	<column name="id_unidade_federativa">
+		<type name="uuid"/>
+	</column>
+	<column name="id_municipio">
+		<type name="uuid"/>
+	</column>
+	<column name="id_partido">
+		<type name="uuid"/>
+	</column>
+	<column name="id_coligacao_partidaria">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_candidato_sequencial">
+		<type name="text"/>
+	</column>
+	<column name="tse_candidato_numero">
+		<type name="text"/>
+	</column>
+	<column name="tse_candidato_nome_urna">
+		<type name="text"/>
+	</column>
+	<column name="tse_candidatura_situacao_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_candidatura_situacao_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_candidatura_protocolo">
+		<type name="text"/>
+	</column>
+	<column name="tse_processo_numero">
+		<type name="text"/>
+	</column>
+	<column name="tse_ocupacao_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_ocupacao_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_genero_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_genero_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_grau_instrucao_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_grau_instrucao_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_estado_civil_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_estado_civil_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_cor_raca_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_cor_raca_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_nacionalidade_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_nacionalidade_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_situacao_turno_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_situacao_turno_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_reeleicao">
+		<type name="boolean"/>
+	</column>
+	<column name="tse_bens_declarar">
+		<type name="boolean"/>
+	</column>
+	<column name="tse_email">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_candidatura" type="pk-constr" table="tse.candidatura">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="pessoa_fisica">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Pessoa Fisica".]]></comment>
+	<position x="1245.67" y="841.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pais_nascimento">
+		<type name="uuid"/>
+	</column>
+	<column name="id_unidade_federativa_nascimento">
+		<type name="uuid"/>
+	</column>
+	<column name="id_municipio_nascimento">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_cpf">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome_social">
+		<type name="text"/>
+	</column>
+	<column name="tse_data_hora_nascimento">
+		<type name="timestamp"/>
+	</column>
+	<column name="tse_numero_titulo_eleitoral">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_pessoa_fisica" type="pk-constr" table="tse.pessoa_fisica">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_candidatura_0001" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_pessoa_fisica_0001" table="tse.pessoa_fisica"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_pessoa_fisica_0002" table="tse.pessoa_fisica"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pais_nascimento"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0002" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_geral"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0003" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_regional"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0004" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pessoa_fisica"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0005" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_cargo"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0007" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pessoa_fisica"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0008" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_cargo"/>
+		</idxelement>
+</index>
+
+<table name="cargo">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Cargo".]]></comment>
+	<position x="1648.33" y="460.556"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_descricao">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_cargo" type="pk-constr" table="tse.cargo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_cargo_0001" table="tse.cargo"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="uix_cargo_0001" table="tse.cargo"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0006" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pais"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0009" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pais"/>
+		</idxelement>
+</index>
+
+<table name="pais">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Pais".]]></comment>
+	<position x="2049.33" y="61.2222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_sigla">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_pais" type="pk-constr" table="tse.pais">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="unidade_federativa">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Unidade Federativa".]]></comment>
+	<position x="2226.56" y="61.889"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pais">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_sigla">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_unidade_federativa" type="pk-constr" table="tse.unidade_federativa">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="municipio">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Municipio".]]></comment>
+	<position x="2469.44" y="67.222"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_unidade_federativa">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_sigla">
+		<type name="text"/>
+	</column>
+	<column name="tse_nome">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_municipio" type="pk-constr" table="tse.municipio">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_pais_0001" table="tse.unidade_federativa"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_pais_0002" table="tse.unidade_federativa"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pais"/>
+		</idxelement>
+</index>
+
+<index name="uix_pais_0001" table="tse.unidade_federativa"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0010" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_municipio"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0011" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_municipio"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0012" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_candidatura"/>
+		</idxelement>
+</index>
+
+<index name="ix_municipio_0001" table="tse.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_municipio_0002" table="tse.municipio"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_unidade_federativa"/>
+		</idxelement>
+</index>
+
+<index name="uix_municipio_0001" table="tse.municipio"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0007" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_unidade_federativa"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0008" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_municipio"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0009" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_partido"/>
+		</idxelement>
+</index>
+
+<index name="ix_pessoa_fisica_0003" table="tse.pessoa_fisica"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_unidade_federativa_nascimento"/>
+		</idxelement>
+</index>
+
+<index name="ix_pessoa_fisica_0004" table="tse.pessoa_fisica"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_municipio_nascimento"/>
+		</idxelement>
+</index>
+
+<index name="uix_pessoa_fisica_0001" table="tse.pessoa_fisica"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<table name="candidatura_bem">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Candidatura / Bem".]]></comment>
+	<position x="2042" y="645"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_candidatura" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_ordem">
+		<type name="text"/>
+	</column>
+	<column name="tse_tipo_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_tipo_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_descricao">
+		<type name="text"/>
+	</column>
+	<column name="tse_valor">
+		<type name="numeric" length="20" precision="6"/>
+	</column>
+	<column name="tse_data_hora_ultima_atualizacao">
+		<type name="timestamp"/>
+	</column>
+	<constraint name="pk_candidatura_bem" type="pk-constr" table="tse.candidatura_bem">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_candidatura_bem_0001" table="tse.candidatura_bem"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_bem_0002" table="tse.candidatura_bem"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_candidatura"/>
+		</idxelement>
+</index>
+
+<index name="uix_candidatura_bem_0001" table="tse.candidatura_bem"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0013" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_candidatura_bem"/>
+		</idxelement>
+</index>
+
+<table name="candidatura_motivo_cassacao">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar a ligaçao "Candidatura" e "Motivo Cassacao".]]></comment>
+	<position x="2041" y="871"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_candidatura" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="id_motivo_cassacao" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<constraint name="pk_candidatura_motivo_cassacao" type="pk-constr" table="tse.candidatura_motivo_cassacao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_candidatura_motivo_cassacao_0001" table="tse.candidatura_motivo_cassacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_candidatura"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_motivo_cassacao_0002" table="tse.candidatura_motivo_cassacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_motivo_cassacao"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0014" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_candidatura_motivo_cassacao"/>
+		</idxelement>
+</index>
+
+<table name="pleito_geral_cargo">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar a ligaçao "Pleito Geral" e "Cargo".]]></comment>
+	<position x="1247" y="461"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_geral" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="id_cargo" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_quantidade_vagas">
+		<type name="bigint"/>
+	</column>
+	<constraint name="pk_pleito_geral_cargo" type="pk-constr" table="tse.pleito_geral_cargo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="uix_coligacao_partidaria_partido_0001" table="tse.coligacao_partidaria_partido"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_coligacao_partidaria"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_partido"/>
+		</idxelement>
+</index>
+
+<index name="ix_pleito_geral_cargo_0001" table="tse.pleito_geral_cargo"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_geral"/>
+		</idxelement>
+</index>
+
+<index name="ix_pleito_geral_cargo_0002" table="tse.pleito_geral_cargo"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_cargo"/>
+		</idxelement>
+</index>
+
+<index name="uix_pleito_geral_cargo_0001" table="tse.pleito_geral_cargo"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_geral"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_cargo"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0015" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_motivo_cassacao"/>
+		</idxelement>
+</index>
+
+<table name="pleito_regional_cargo">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar a ligaçao "Pleito Regional" e "Cargo".]]></comment>
+	<position x="1247" y="656"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="id_pleito_regional" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="id_cargo" not-null="true">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_quantidade_vagas">
+		<type name="bigint"/>
+	</column>
+	<constraint name="pk_pleito_regional_cargo" type="pk-constr" table="tse.pleito_regional_cargo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_pleito_regional_cargo_0001" table="tse.pleito_regional_cargo"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_regional"/>
+		</idxelement>
+</index>
+
+<index name="ix_pleito_regional_cargo_0002" table="tse.pleito_regional_cargo"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_cargo"/>
+		</idxelement>
+</index>
+
+<index name="uix_pleito_regional_cargo_0001" table="tse.pleito_regional_cargo"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_regional"/>
+		</idxelement>
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_cargo"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0016" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_geral_cargo"/>
+		</idxelement>
+</index>
+
+<table name="motivo_cassacao">
+	<schema name="tse"/>
+	<role name="postgres"/>
+	<comment><![CDATA[Entidade responsavel por armazenar "Cassacao".]]></comment>
+	<position x="2521" y="874"/>
+	<column name="id" not-null="true" default-value="uuid_generate_v1()">
+		<type name="uuid"/>
+	</column>
+	<column name="tse_key">
+		<type name="text"/>
+	</column>
+	<column name="tse_codigo">
+		<type name="text"/>
+	</column>
+	<column name="tse_descricao">
+		<type name="text"/>
+	</column>
+	<constraint name="pk_motivo_cassacao" type="pk-constr" table="tse.motivo_cassacao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="ix_motivo_cassacao_01" table="tse.motivo_cassacao"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="uix_motivo_cassacao_01" table="tse.motivo_cassacao"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<index name="ix_fonte_referencia_0017" table="tse.fonte_referencia"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_pleito_regional_cargo"/>
+		</idxelement>
+</index>
+
+<index name="ix_candidatura_0010" table="tse.candidatura"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="id_coligacao_partidaria"/>
+		</idxelement>
+</index>
+
+<index name="uix_candidatura_0001" table="tse.candidatura"
+	 concurrent="false" unique="true" fast-update="false" buffering="false"
+	 index-type="btree" factor="0">
+		<idxelement use-sorting="true" nulls-first="false" asc-order="true">
+			<column name="tse_key"/>
+		</idxelement>
+</index>
+
+<constraint name="fk_coligacao_partidaria_partido_coligacao_partidaria" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.coligacao_partidaria" table="tse.coligacao_partidaria_partido">
+	<columns names="id_coligacao_partidaria" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_coligacao_partidaria_partido_partido" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.partido" table="tse.coligacao_partidaria_partido">
+	<columns names="id_partido" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_fonte" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.fonte" table="tse.fonte_referencia">
+	<columns names="id_fonte" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_coligacao_partidaria" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.coligacao_partidaria" table="tse.fonte_referencia">
+	<columns names="id_coligacao_partidaria" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_coligacao_partidaria_composicao" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.coligacao_partidaria_partido" table="tse.fonte_referencia">
+	<columns names="id_coligacao_partidaria_composicao" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_partido" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.partido" table="tse.fonte_referencia">
+	<columns names="id_partido" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_pleito_geral" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_geral" table="tse.fonte_referencia">
+	<columns names="id_pleito_geral" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_pleito_regional" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_regional" table="tse.fonte_referencia">
+	<columns names="id_pleito_regional" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_pessoa_fisica" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pessoa_fisica" table="tse.fonte_referencia">
+	<columns names="id_pessoa_fisica" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.cargo" table="tse.fonte_referencia">
+	<columns names="id_cargo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_pais" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pais" table="tse.fonte_referencia">
+	<columns names="id_pais" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_unidade_federativa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.unidade_federativa" table="tse.fonte_referencia">
+	<columns names="id_unidade_federativa" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_municipio" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.municipio" table="tse.fonte_referencia">
+	<columns names="id_municipio" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_candidatura" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.candidatura" table="tse.fonte_referencia">
+	<columns names="id_candidatura" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_candidatura_bem" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.candidatura_bem" table="tse.fonte_referencia">
+	<columns names="id_candidatura_bem" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_candidatura_motivo_cassacao" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.candidatura_motivo_cassacao" table="tse.fonte_referencia">
+	<columns names="id_candidatura_motivo_cassacao" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_motivo_cassacao" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.motivo_cassacao" table="tse.fonte_referencia">
+	<columns names="id_motivo_cassacao" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_pleito_geral_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_geral_cargo" table="tse.fonte_referencia">
+	<columns names="id_pleito_geral_cargo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_fonte_referencia_pleito_regional_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_regional_cargo" table="tse.fonte_referencia">
+	<columns names="id_pleito_regional_cargo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pleito_regional_pleito_geral" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_geral" table="tse.pleito_regional">
+	<columns names="id_pleito_geral" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_pleito_geral" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_geral" table="tse.candidatura">
+	<columns names="id_pleito_geral" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_pleito_regional" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_regional" table="tse.candidatura">
+	<columns names="id_pleito_regional" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_pessoa_fisica" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pessoa_fisica" table="tse.candidatura">
+	<columns names="id_pessoa_fisica" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.cargo" table="tse.candidatura">
+	<columns names="id_cargo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_pais" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pais" table="tse.candidatura">
+	<columns names="id_pais" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_unidade_federativa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.unidade_federativa" table="tse.candidatura">
+	<columns names="id_unidade_federativa" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_municipio" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.municipio" table="tse.candidatura">
+	<columns names="id_municipio" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_partido" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.partido" table="tse.candidatura">
+	<columns names="id_partido" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_coligacao_partidaria" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.coligacao_partidaria" table="tse.candidatura">
+	<columns names="id_coligacao_partidaria" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pessoa_fisica_pais_nascimento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pais" table="tse.pessoa_fisica">
+	<columns names="id_pais_nascimento" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pessoa_fisica_unidade_federativa_nascimento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.unidade_federativa" table="tse.pessoa_fisica">
+	<columns names="id_unidade_federativa_nascimento" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pessoa_fisica_municipio_nascimento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.municipio" table="tse.pessoa_fisica">
+	<columns names="id_municipio_nascimento" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_unidade_federativa_pais" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pais" table="tse.unidade_federativa">
+	<columns names="id_pais" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_municipio_unidade_federativa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.unidade_federativa" table="tse.municipio">
+	<columns names="id_unidade_federativa" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_bem_candidatura" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.candidatura" table="tse.candidatura_bem">
+	<columns names="id_candidatura" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_motivo_cassacao_candidatura" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.candidatura" table="tse.candidatura_motivo_cassacao">
+	<columns names="id_candidatura" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_candidatura_motivo_cassacao_motivo_cassacao" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.motivo_cassacao" table="tse.candidatura_motivo_cassacao">
+	<columns names="id_motivo_cassacao" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pleito_geral_cargo_pleito_geral" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_geral" table="tse.pleito_geral_cargo">
+	<columns names="id_pleito_geral" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pleito_geral_cargo_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.cargo" table="tse.pleito_geral_cargo">
+	<columns names="id_cargo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pleito_regional_cargo_pleito_regional" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.pleito_regional" table="tse.pleito_regional_cargo">
+	<columns names="id_pleito_regional" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_pleito_regional_cargo_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="tse.cargo" table="tse.pleito_regional_cargo">
+	<columns names="id_cargo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_fonte_referencia_fonte" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.fonte"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_coligacao_partidaria" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.coligacao_partidaria"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_partido" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.partido"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_coligacao_partidaria_composicao_coligacao_partidaria" type="relfk"
+	 src-table="tse.coligacao_partidaria_partido"
+	 dst-table="tse.coligacao_partidaria"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_coligacao_partidaria_composicao_partido" type="relfk"
+	 src-table="tse.coligacao_partidaria_partido"
+	 dst-table="tse.partido"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_coligacao_partidaria_composicao" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.coligacao_partidaria_partido"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_pleito_geral" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.pleito_geral"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pleito_regional_pleito_geral" type="relfk"
+	 src-table="tse.pleito_regional"
+	 dst-table="tse.pleito_geral"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_pleito_regional" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.pleito_regional"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_pleito_geral" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.pleito_geral"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_pleito_regional" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.pleito_regional"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_pessoa_fisica" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.pessoa_fisica"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_pessoa_fisica" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.pessoa_fisica"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_candidatura" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.candidatura"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_cargo" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.cargo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_cargo" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.cargo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_municipio_unidade_federativa" type="relfk"
+	 src-table="tse.municipio"
+	 dst-table="tse.unidade_federativa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_unidade_federativa_pais" type="relfk"
+	 src-table="tse.unidade_federativa"
+	 dst-table="tse.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_pais" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_unidade_federativa" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.unidade_federativa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_municipio" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.municipio"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_pais" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_unidade_federativa" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.unidade_federativa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_municipio" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.municipio"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pessoa_fisica_pais" type="relfk"
+	 src-table="tse.pessoa_fisica"
+	 dst-table="tse.pais"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pessoa_fisica_unidade_federativa" type="relfk"
+	 src-table="tse.pessoa_fisica"
+	 dst-table="tse.unidade_federativa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pessoa_fisica_municipio" type="relfk"
+	 src-table="tse.pessoa_fisica"
+	 dst-table="tse.municipio"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_bem_candidatura" type="relfk"
+	 src-table="tse.candidatura_bem"
+	 dst-table="tse.candidatura"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_candidatura_bem" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.candidatura_bem"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_motivo_cassacao_candidatura" type="relfk"
+	 src-table="tse.candidatura_motivo_cassacao"
+	 dst-table="tse.candidatura"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_candidatura_motivo_cassacao" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.candidatura_motivo_cassacao"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pleito_geral_cargo_pleito_geral" type="relfk"
+	 src-table="tse.pleito_geral_cargo"
+	 dst-table="tse.pleito_geral"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pleito_geral_cargo_cargo" type="relfk"
+	 src-table="tse.pleito_geral_cargo"
+	 dst-table="tse.cargo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_pleito_geral_cargo" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.pleito_geral_cargo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pleito_regional_cargo_pleito_regional" type="relfk"
+	 src-table="tse.pleito_regional_cargo"
+	 dst-table="tse.pleito_regional"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pleito_regional_cargo_cargo" type="relfk"
+	 src-table="tse.pleito_regional_cargo"
+	 dst-table="tse.cargo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_pleito_regional_cargo" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.pleito_regional_cargo"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_motivo_cassacao_motivo_cassacao" type="relfk"
+	 src-table="tse.candidatura_motivo_cassacao"
+	 dst-table="tse.motivo_cassacao"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_fonte_referencia_motivo_cassacao" type="relfk"
+	 src-table="tse.fonte_referencia"
+	 dst-table="tse.motivo_cassacao"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_partido" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.partido"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_candidatura_coligacao_partidaria" type="relfk"
+	 src-table="tse.candidatura"
+	 dst-table="tse.coligacao_partidaria"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

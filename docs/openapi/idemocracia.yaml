@@ -1,0 +1,1968 @@
+openapi: 3.0.0
+
+#
+info:
+
+  #
+  version: '1.0.0'
+  title: API.IDEMOCRACIA
+  description: 'API de consulta de dados públicos compilados'
+  contact:
+    name: iDEMOCRACIA
+    email: idemocracia@idemocracia.digital
+
+#
+servers: 
+
+  #
+  - url: https://api.idemocracia.digital
+    description: Produção
+
+#
+tags:
+
+  - name: TSE / Pessoa Física
+    description: 'Registro de "Pessoa Física" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+
+  - name: TSE / Candidatura
+    description: 'Registro de "Candidatura" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Bem
+    description: 'Registro de "Bem" da "Candidatura" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+
+  - name: TSE / Partido
+    description: 'Registro de "Parido" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Coligação Partidária
+    description: 'Registro de "Coligação Partidária" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Cargo
+    description: 'Registro de "Cargo" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Pleito Geral
+    description: 'Registro de "Pleito Geral" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Pleito Regional
+    description: 'Registro de "Pleito Regional" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+
+  - name: TSE / País
+    description: 'Registro de "País" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Unidade Federativa
+    description: 'Registro de "Unidade Federativa" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Município
+    description: 'Registro de "Município" obtido junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+    
+  - name: TSE / Fonte
+    description: 'Registro de "Fonte" das informações obtidas junto ao TSE'
+    externalDocs:
+      description: 'Fonte'
+      url: https://dadosabertos.tse.jus.br
+
+#
+paths: 
+
+  # TSE / Fonte
+
+  #
+  '/v1/tse/fontes':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Fonte
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/fontes/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Fonte        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # TSE / País
+
+  #
+  '/v1/tse/paises':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / País
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_pais_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/paises/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / País        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_pais_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/paises/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / País        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/paises/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / País        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+          
+  # TSE / Unidade Federativa
+          
+  #
+  '/v1/tse/unidadesFederativas':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Unidade Federativa
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_unidade_federativa_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/unidadesFederativas/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Unidade Federativa        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_unidade_federativa_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/unidadesFederativas/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Unidade Federativa        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/unidadesFederativas/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Unidade Federativa        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # TSE / Município
+
+  #
+  '/v1/tse/municipios':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Município
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_municipio_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/municipios/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Município       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_municipio_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/municipios/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Município        
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/municipios/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Município      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+# TSE / Pessoa Física
+
+  #
+  '/v1/tse/pessoasFisicas':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Pessoa Física
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_pessoa_fisica_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/pessoasFisicas/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Pessoa Física       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_pessoa_fisica_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/pessoasFisicas/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Pessoa Física     
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/pessoasFisicas/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Pessoa Física      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_pessoa_fisica_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # TSE / Partido
+
+  #
+  '/v1/tse/partidos':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Partido
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_partido_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/partidos/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Partido       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_partido_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/partidos/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Partido     
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/partidos/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Partido      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # TSE / Coligação Partidária
+
+  #
+  '/v1/tse/coligacoesPartidarias':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Coligação Partidária
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_coligacao_partidaria_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/coligacoesPartidarias/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Coligação Partidária       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_coligacao_partidaria_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/coligacoesPartidarias/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Coligação Partidária       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/coligacoesPartidarias/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Coligação Partidária      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # TSE / Cargo
+
+  #
+  '/v1/tse/cargos':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Cargo
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_cargo_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/cargos/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Cargo       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_cargo_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/cargos/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Cargo             
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/cargos/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Cargo      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+ 
+  # TSE / Pleito Geral
+
+  #
+  '/v1/tse/pleitosGerais':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Pleito Geral
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_pleito_geral_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/pleitosGerais/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Pleito Geral       
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_pleito_geral_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/pleitosGerais/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Pleito Geral                
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/pleitosGerais/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Pleito Geral      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # TSE / Pleito Regional
+
+  #
+  '/v1/tse/pleitosRegionais':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Pleito Regional
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_pleito_regional_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/pleitosRegionais/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Pleito Regional      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_pleito_regional_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/pleitosRegionais/{id}/candidaturas':
+    get:
+      summary: Obtenção da lista de "Candidaturas" do recurso.
+      tags: 
+        - TSE / Pleito Regional                   
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/pleitosRegionais/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Pleito Regional      
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # Candidatura
+
+  #
+  '/v1/tse/candidaturas':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Candidatura
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/candidaturas/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Candidatura     
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_candidatura_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/candidaturas/{id}/bens':
+    get:
+      summary: Obtenção da lista de "Bens" do recurso.
+      tags: 
+        - TSE / Candidatura    
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_bem_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/candidaturas/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Candidatura    
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  # Bem
+
+  #
+  '/v1/tse/bens':
+    get:
+      summary: Obtenção da lista dos recursos
+      tags: 
+        - TSE / Bem
+      parameters: 
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'      
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_bem_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+
+  #
+  '/v1/tse/bens/{id}':
+    get:
+      summary: Obtenção do recurso
+      tags: 
+        - TSE / Bem     
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_bem_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+  #
+  '/v1/tse/bens/{id}/fontes':
+    get:
+      summary: Obtenção da lista de "Fontes" do recurso.
+      tags: 
+        - TSE / Bem    
+      parameters:
+        - $ref: '#/components/parameters/IdPathParam'
+        - $ref: '#/components/parameters/PageNumberQueryParam'       
+        - $ref: '#/components/parameters/PageSizerQueryParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/200_paged_response_fonte_tse'
+        '400':
+          $ref: '#/components/responses/400_bad_request'
+        '404':
+          $ref: '#/components/responses/404_not_found'
+
+#
+components:
+
+  #
+  parameters:
+
+    #
+    PageNumberQueryParam:
+      name: page_number
+      in: query
+      description: Page Number
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 1
+
+    #
+    PageSizerQueryParam:
+      name: page_size
+      in: query
+      description: Page Size
+      required: false
+      schema:
+        type: integer
+        format: int32
+        default: 100
+
+    #
+    IdPathParam:
+      name: id
+      in: path
+      description: ID
+      required: true
+      schema:
+        type: string
+        format: uuid
+        
+  #
+  responses:
+
+    # 200_fonte_tse
+    200_fonte_tse:
+      description: "Fonte"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FonteTSE'
+            
+    # 200_paged_response_fonte_tse
+    200_paged_response_fonte_tse:
+      description: Lista paginada das "Fontes"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseFonteTSE'
+
+    # 200_pais_tse
+    200_pais_tse:
+      description: "Pais"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaisTSE'
+            
+    # 200_paged_response_pais_tse
+    200_paged_response_pais_tse:
+      description: Lista paginada dos "Paises"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponsePaisTSE'
+            
+    # 200_unidade_federativa_tse
+    200_unidade_federativa_tse:
+      description: "Unidade Federativa"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnidadeFederativaTSE'
+            
+    # 200_paged_response_unidade_federativa_tse
+    200_paged_response_unidade_federativa_tse:
+      description: Lista paginada dos "Unidades Federativas"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseUnidadeFederativaTSE'
+            
+    # 200_municipio_tse
+    200_municipio_tse:
+      description: "Município"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MunicipioTSE'
+            
+    # 200_paged_response_municipio_tse
+    200_paged_response_municipio_tse:
+      description: Lista paginada dos "Municípios"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseMunicipioTSE'
+            
+    # 200_pessoa_fisica_tse
+    200_pessoa_fisica_tse:
+      description: "Pessoa Física"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PessoaFisicaTSE'
+            
+    # 200_paged_response_pessoa_fisica_tse
+    200_paged_response_pessoa_fisica_tse:
+      description: Lista paginada das "Pessoas Físicas"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponsePessoaFisicaTSE'
+            
+    # 200_partido_tse
+    200_partido_tse:
+      description: "Partido"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PartidoTSE'
+
+    # 200_paged_response_partido_tse
+    200_paged_response_partido_tse:
+      description: Lista paginada dos "Partidos"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponsePartidoTSE'
+
+    # 200_coligacao_partidaria_tse
+    200_coligacao_partidaria_tse:
+      description: "Coligação Partidária"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ColigacaoPartidariaTSE'
+
+    # 200_paged_response_coligacao_partidaria_tse
+    200_paged_response_coligacao_partidaria_tse:
+      description: Lista paginada das "Coligações Partidárias"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseColigacaoPartidariaTSE'  
+
+    # 200_cargo_tse
+    200_cargo_tse:
+      description: "Cargo"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CargoTSE'
+            
+    # 200_paged_response_cargo_tse
+    200_paged_response_cargo_tse:
+      description: Lista paginada dos "Cargos"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseCargoTSE'
+            
+    # 200_pleito_geral_tse
+    200_pleito_geral_tse:
+      description: "Pleito Geral"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PleitoGeralTSE'
+            
+    # 200_paged_response_pleito_geral_tse
+    200_paged_response_pleito_geral_tse:
+      description: Lista paginada dos "Pleitos Gerais"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponsePleitoGeralTSE'
+            
+    # 200_pleito_regional_tse
+    200_pleito_regional_tse:
+      description: "Pleito Regional"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PleitoRegionalTSE'
+            
+    # 200_paged_response_pleito_regional_tse
+    200_paged_response_pleito_regional_tse:
+      description: Lista paginada dos "Pleitos Regionais"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponsePleitoRegionalTSE'
+            
+    # 200_candidatura_tse
+    200_candidatura_tse:
+      description: "Candidatura"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CandidaturaTSE'
+            
+    # 200_paged_response_candidatura_tse
+    200_paged_response_candidatura_tse:
+      description: Lista paginada das "Candidaturas"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseCandidaturaTSE'
+
+    # 200_bem_tse
+    200_bem_tse:
+      description: "Bem"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CandidaturaTSE'
+            
+    # 200_paged_response_bem_tse
+    200_paged_response_bem_tse:
+      description: Lista paginada dos "Bens"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PagedResponseBemTSE'
+
+    # 400_bad_request
+    400_bad_request:
+      description: Requisição mal formada
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedResponse'
+  
+    # 404_not_found
+    404_not_found:
+      description: Registro não encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UnexpectedResponse'
+
+  #
+  schemas:
+  
+    # _links_href
+    _links_href:
+      type: object
+      properties:
+        href: 
+          type: string
+          format: uri
+
+    # UnexpectedResponse
+    UnexpectedResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string  
+  
+    # Paged Response
+    PagedResponse:
+      type: object
+      properties:
+        _metadata:
+          type: object
+          properties:
+              page_number:
+                type: integer
+              page_size:
+                type: integer
+              _links:
+                type: object
+                properties:
+                  self:
+                    $ref: '#/components/schemas/_links_href'
+                  previous:
+                    $ref: '#/components/schemas/_links_href'
+                  next:
+                    $ref: '#/components/schemas/_links_href'
+
+    # Fonte - TSE
+    FonteTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        sigla:
+          type: string
+        descricao:
+          type: string
+        url:
+          type: string
+          format: uri
+        urlRepositorio:
+          type: string
+          format: uri
+        registro:
+          type: integer
+          format: int32
+        dataHoraObtencao:
+          type: string
+          format: date-time
+        dataHoraImportacao:
+          type: string
+          format: date-time
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Fonte - TSE
+    PagedResponseFonteTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/FonteTSE'
+
+    # País - TSE
+    PaisTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        sigla:
+          type: string
+        nome:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - País - TSE
+    PagedResponsePaisTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/PaisTSE'
+
+    # Unidade Federativa - TSE
+    UnidadeFederativaTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        sigla:
+          type: string
+        nome:
+          type: string
+        _embedded:
+          type: object
+          properties:
+            pais: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Unidade Federativa - TSE
+    PagedResponseUnidadeFederativaTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/UnidadeFederativaTSE'
+
+    # Municipio - TSE
+    MunicipioTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        sigla:
+          type: string
+        nome:
+          type: string
+        _embedded:
+          type: object
+          properties:
+            unidadeFederativa: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Municipio - TSE
+    PagedResponseMunicipioTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/MunicipioTSE'
+            
+    # Pessoa Fisica - TSE
+    PessoaFisicaTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        nome:
+          type: string
+        nomeSocial:
+          type: string
+        nascimentoDataHora:
+          type: string
+          format: date-time
+        cpf:
+          type: string
+        tituloEleitoral:
+          type: string
+        _embedded:
+          type: object
+          properties:
+            nascimentoPais: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            nascimentoUnidadeFederativa: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            nascimentoMunicipio: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Pessoa Fisica - TSE
+    PagedResponsePessoaFisicaTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/PessoaFisicaTSE'
+
+    # Partido - TSE
+    PartidoTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        numero:
+          type: integer
+          format: int32
+        sigla:
+          type: string
+        nome:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            coligacoesPartidarias:
+              $ref: '#/components/schemas/_links_href'  
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Partido - TSE
+    PagedResponsePartidoTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/PartidoTSE'
+
+    # Coligação Partidaria - TSE
+    ColigacaoPartidariaTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        sequencial:
+          type: string
+        nome:
+          type: string
+        tipoDescricao:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Coligação Partidaria - TSE
+    PagedResponseColigacaoPartidariaTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/ColigacaoPartidariaTSE'
+
+    # Cargo - TSE
+    CargoTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        sigla:
+          type: string
+        descricao:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Cargo - TSE
+    PagedResponseCargoTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/CargoTSE'
+
+    # Pleito Geral - TSE
+    PleitoGeralTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        codigo:
+          type: string
+        descricao:
+          type: string
+        turno:
+          type: string
+        dataHora:
+          type: string
+          format: date-time
+        tipoCodigo:
+          type: string
+        tipoDescricao:
+          type: string
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Pleito Geral - TSE
+    PagedResponsePleitoGeralTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/PleitoGeralTSE'
+
+    # Pleito Regional - TSE
+    PleitoRegionalTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        codigo:
+          type: string
+        descricao:
+          type: string
+        abrangenciaTipoDescricao:
+          type: string          
+        turno:
+          type: string
+        dataHora:
+          type: string
+          format: date-time
+        tipoCodigo:
+          type: string
+        tipoDescricao:
+          type: string
+        _embedded:
+          type: object
+          properties:
+            pleitoGeral: 
+              type: object
+              properties:
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            candidaturas:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Pleito Regional - TSE
+    PagedResponsePleitoRegionalTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/PleitoRegionalTSE'
+
+    # Candidatura - TSE
+    CandidaturaTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        candidatoSequencial:
+          type: string
+        candidatoNumero:
+          type: string
+        candidatoNomeUrna:
+          type: string          
+        situacaoCodigo:
+          type: string
+        situacaoDescricao:
+          type: string
+        protocolo:
+          type: string
+        processoNumero:
+          type: string
+        ocupacaoCodigo:
+          type: string
+        ocupacaoDescricao:
+          type: string
+        generoCodigo:
+          type: string
+        generoDescricao:
+          type: string
+        grauInstrucaoCodigo:
+          type: string
+        grauInstrucaoDescricao:
+          type: string
+        estadoCivilCodigo:
+          type: string
+        estadoCivilDescricao:
+          type: string
+        corRacaCodigo:
+          type: string
+        corRacaDescricao:
+          type: string
+        nacionalidadeCodigo:
+          type: string
+        nacionalidadeDescricao:
+          type: string
+        situacaoTurnoCodigo:
+          type: string
+        situacaoTurnoDescricao:
+          type: string
+        reeleicao:
+          type: boolean
+        bensDeclarar:
+          type: boolean
+        email:
+          type: string
+          format: email
+        _embedded:
+          type: object
+          properties:
+            pleitoGeral: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                codigo:
+                  type: string
+                descricao:
+                  type: string
+                turno:
+                  type: string
+                dataHora:
+                  type: string
+                  format: date-time
+                tipoCodigo:
+                  type: string
+                tipoDescricao:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            pleitoRegional: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                codigo:
+                  type: string
+                descricao:
+                  type: string
+                abrangenciaTipoDescricao:
+                  type: string          
+                turno:
+                  type: string
+                dataHora:
+                  type: string
+                  format: date-time
+                tipoCodigo:
+                  type: string
+                tipoDescricao:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            pessoaFisica: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                nome:
+                  type: string
+                nomeSocial:
+                  type: string
+                nascimentoDataHora:
+                  type: string
+                  format: date-time
+                cpf:
+                  type: string
+                tituloEleitoral:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            cargo: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                descricao:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            pais: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            unidadeFederativa: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            municipio: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            partido: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                numero:
+                  type: integer
+                  format: int32
+                sigla:
+                  type: string
+                nome:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+            coligacaoPartidaria: 
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  readOnly: true
+                sequencial:
+                  type: string
+                nome:
+                  type: string
+                tipoDescricao:
+                  type: string
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            bens:
+              $ref: '#/components/schemas/_links_href'        
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Candidatura - TSE
+    PagedResponseCandidaturaTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/CandidaturaTSE'
+            
+    # Bem - TSE
+    BemTSE:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        ordem:
+          type: string
+        tipoCodigo:
+          type: string
+        tipoDescricao:
+          type: string          
+        descricao:
+          type: string
+        valor:
+          type: number
+        dataHoraUltimaAtualizacao:
+          type: string
+          format: date-time
+        _embedded:
+          type: object
+          properties:
+            candidatura: 
+              type: object
+              properties:
+                _links:
+                  type: object
+                  properties:
+                    self:
+                      $ref: '#/components/schemas/_links_href'
+        _links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/_links_href'
+            fontes:
+              $ref: '#/components/schemas/_links_href'
+
+    # Paged Response - Bem - TSE
+    PagedResponseBemTSE:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/PagedResponse'
+      properties:
+        data:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/BemTSE'
