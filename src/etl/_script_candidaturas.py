@@ -28,6 +28,8 @@ import unidecode
 #
 logging.basicConfig(filename=("_script_candidaturas_%s.log" % datetime.datetime.now().strftime('%Y_%m_%d-%I_%M_%s')), level=logging.INFO)
 
+# VARIÁVEIS DE CONFIGURAÇÃO DE AMBIENTE
+
 #
 repositorio_remoto = True
 
