@@ -1,8 +1,8 @@
 -- Database generated with pgModeler (PostgreSQL Database Modeler).
 -- pgModeler  version: 0.8.0
--- PostgreSQL version: 9.4
+-- PostgreSQL version: 12
 -- Project Site: pgmodeler.com.br
--- Model Author: ---
+-- Model Author: Joao Paulo Silva Simoes
 
 
 -- Database creation must be done outside an multicommand file.
@@ -11,7 +11,7 @@
 -- -- DROP DATABASE IF EXISTS idemocracia;
 -- 
 -- -- Prepended SQL commands --
--- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- -- ddl-end --
 -- 
 -- CREATE DATABASE idemocracia

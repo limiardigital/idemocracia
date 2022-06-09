@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.8.0" last-position="828,0" last-zoom="1"
+<dbmodel pgmodeler-ver="0.8.0" author="Joao Paulo Silva Simoes" last-position="137,405" last-zoom="1"
 	 default-schema="public" default-owner="postgres">
 <database name="idemocracia">
 	<prepended-sql><![CDATA[CREATE EXTENSION IF NOT EXISTS "uuid-ossp";]]></prepended-sql>
