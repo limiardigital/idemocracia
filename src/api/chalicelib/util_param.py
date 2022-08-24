@@ -184,7 +184,7 @@ def process_query_param_string(query_params, param_name, required):
             try:
 
                 #
-                value = str(value.replace('*', '%'))
+                value = str(value.replace('*', '%').upper())
 
             except Exception as e:
 
