@@ -330,7 +330,8 @@ from
     %(sql_template_restriction_by_id_unidade_federativa)s
     %(sql_template_restriction_by_id_municipio)s
     %(sql_template_restriction_by_id_partido)s
-    %(sql_template_restriction_by_id_coligacao_partidaria)s					
+    %(sql_template_restriction_by_id_coligacao_partidaria)s
+    %(sql_template_restriction_by_candidato_nome_urna)s						
     %(sql_template_order)s
     %(sql_template_restriction_pagination)s
 ) as inner_query
@@ -357,6 +358,7 @@ from
 	'sql_template_restriction_by_id_municipio': '%(sql_template_restriction_by_id_municipio)s',
 	'sql_template_restriction_by_id_partido': '%(sql_template_restriction_by_id_partido)s',
 	'sql_template_restriction_by_id_coligacao_partidaria': '%(sql_template_restriction_by_id_coligacao_partidaria)s',
+	'sql_template_restriction_by_candidato_nome_urna': '%(sql_template_restriction_by_candidato_nome_urna)s',	
     'sql_template_order': '%(sql_template_order)s',
     'sql_template_restriction_pagination': '%(sql_template_restriction_pagination)s'}
 
@@ -421,6 +423,12 @@ and candidatura.id_coligacao_partidaria = %(id_coligacao_partidaria)s
 """
 
 #
+sql_template_postgresql_restriction_by_candidato_nome_urna = """
+--
+and candidatura.tse_candidato_nome_urna like %(tse_candidato_nome_urna)s
+"""
+
+#
 sql_template_postgresql_order_by_id = """
 --
 order by candidatura.id
@@ -466,6 +474,7 @@ class TseCandidaturaResourceService:
                 'sql_template_restriction_by_id_municipio': '',
                 'sql_template_restriction_by_id_partido': '',
                 'sql_template_restriction_by_id_coligacao_partidaria': '',
+				'sql_template_restriction_by_candidato_nome_urna': '',
                 'sql_template_order': sql_template_postgresql_order_by_id,
                 'sql_template_restriction_pagination': ''}}
             #
@@ -506,6 +515,7 @@ class TseCandidaturaResourceService:
             origin_resource_path=None,			
             page_number=None,
             page_size=None,
+			candidato_nome_urna=None,
 			id_pleito_geral=None,
 			id_pleito_regional=None,
             id_pessoa_fisica=None,
@@ -580,6 +590,7 @@ class TseCandidaturaResourceService:
                 'sql_template_restriction_by_id_municipio': sql_template_postgresql_restriction_by_id_municipio if (id_municipio is not None) else '',
                 'sql_template_restriction_by_id_partido': sql_template_postgresql_restriction_by_id_partido if (id_partido is not None) else '',
                 'sql_template_restriction_by_id_coligacao_partidaria': sql_template_postgresql_restriction_by_id_coligacao_partidaria if (id_coligacao_partidaria is not None) else '',
+                'sql_template_restriction_by_candidato_nome_urna': sql_template_postgresql_restriction_by_candidato_nome_urna if (candidato_nome_urna is not None) else '',
                 'sql_template_order': sql_template_postgresql_order_by_id, 
                 'sql_template_restriction_pagination': sql_template_postgresql_rescriction_pagination if ((page_number is not None) and (page_size is not None)) else ''}}
 
@@ -595,7 +606,8 @@ class TseCandidaturaResourceService:
 				'id_partido': id_partido,
 				'id_coligacao_partidaria': id_coligacao_partidaria,
                 'page_number': page_number,
-                'page_size': page_size})
+                'page_size': page_size,
+				'tse_candidato_nome_urna': candidato_nome_urna})
 
             #
             result = cursor.fetchone()

@@ -74,6 +74,7 @@ def get_all():
         #
         query_param_page_number = None
         query_param_page_size = None
+        query_param_candidato_nome_urna = None
 
         #
         try:
@@ -81,6 +82,7 @@ def get_all():
             #
             query_param_page_number = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_NUMBER, False, 1, sys.maxsize, util_param.QUERY_PARAM_PAGE_NUMBER_DEFAULT_VALUE)
             query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, 100, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
+            query_param_candidato_nome_urna = util_param.process_query_param_string(app.app.current_request.query_params, util_param.QUERY_PARAM_CANDIDATO_NOME_URNA, False) 
 
         #
         except Exception as e:
@@ -92,7 +94,8 @@ def get_all():
         result = service.find_all_by(
             origin_resource_path=app.app.current_request.context['path'],            
             page_number=query_param_page_number,
-            page_size=query_param_page_size)
+            page_size=query_param_page_size,
+            candidato_nome_urna=query_param_candidato_nome_urna)
 
         #
         if result is not None:

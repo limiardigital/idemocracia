@@ -5,6 +5,10 @@ import uuid
 QUERY_PARAM_PAGE_NUMBER = 'page_number'
 QUERY_PARAM_PAGE_SIZE = 'page_size'
 
+QUERY_PARAM_CANDIDATO_NOME_URNA = 'candidato_nome_urna'
+QUERY_PARAM_PESSOA_FISICA_NOME = 'pessoa_fisica_nome'
+QUERY_PARAM_PESSOA_FISICA_NOME_SOCIAL = 'pessoa_fisica_nome_social'
+
 #
 PATH_PARAM_TSE_ID = 'id'
 
@@ -143,6 +147,49 @@ def process_query_param_integer(query_params, param_name, required, minValue, ma
 
         #
         value = defaultValue
+
+    #
+    return value
+
+#
+def process_query_param_string(query_params, param_name, required):
+
+    #
+    value = None
+
+    #
+    if (required and ((query_params is None) or (param_name not in query_params))):
+
+        #
+        raise Exception('query_param_required: param: %(param)s' % {'param': param_name});
+
+    #
+    if (query_params is not None):
+
+        #
+        try:
+
+            #
+            value = query_params[param_name]
+
+        except Exception as e:
+
+            #
+            value = None
+
+        #
+        if (value is not None):
+
+            #
+            try:
+
+                #
+                value = str(value.replace('*', '%'))
+
+            except Exception as e:
+
+                #
+                raise Exception('query_param_value_invalid: param: %(param)s - value: %(value)s' % {'param': param_name, 'value': value})
 
     #
     return value

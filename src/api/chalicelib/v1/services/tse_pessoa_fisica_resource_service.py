@@ -130,6 +130,8 @@ from
     left join tse.municipio          on municipio.id          = pessoa_fisica.id_municipio_nascimento
     where 1 = 1
     %(sql_template_restriction_by_id)s
+    %(sql_template_restriction_by_pessoa_fisical_nome)s
+    %(sql_template_restriction_by_pessoa_fisical_nome_social)s        
     %(sql_template_order)s
     %(sql_template_restriction_pagination)s
 ) as inner_query
@@ -141,6 +143,8 @@ from
     '_links_candidatura_sub_resource': util_resource.RESOURCE_V1_TSE_CANDIDATURA,    
     '_links_fonte_sub_resource': util_resource.RESOURCE_V1_TSE_FONTE,
     'sql_template_restriction_by_id': '%(sql_template_restriction_by_id)s',
+ 	'sql_template_restriction_by_pessoa_fisical_nome': '%(sql_template_restriction_by_pessoa_fisical_nome)s',
+ 	'sql_template_restriction_by_pessoa_fisical_nome_social': '%(sql_template_restriction_by_pessoa_fisical_nome_social)s',       
     'sql_template_order': '%(sql_template_order)s',
     'sql_template_restriction_pagination': '%(sql_template_restriction_pagination)s'}
 
@@ -148,6 +152,18 @@ from
 sql_template_postgresql_restriction_by_id = """
 --
 and pessoa_fisica.id = %(id)s
+"""
+
+#
+sql_template_postgresql_restriction_by_pessoa_fisica_nome = """
+--
+and pessoa_fisica.tse_nome like %(tse_pessoa_fisica_nome)s
+"""
+
+#
+sql_template_postgresql_restriction_by_pessoa_fisica_nome_social = """
+--
+and pessoa_fisica.tse_nome_social like %(tse_pessoa_fisica_nome_social)s
 """
 
 #
@@ -187,6 +203,8 @@ class TsePessoaFisicaResourceService:
             """  % {
                 'sql_template_select': sql_template_postgresql_select_json_object % { 
                 'sql_template_restriction_by_id': sql_template_postgresql_restriction_by_id,
+                'sql_template_restriction_by_pessoa_fisical_nome': '',
+                'sql_template_restriction_by_pessoa_fisical_nome_social': '',
                 'sql_template_order': sql_template_postgresql_order_by_id,
                 'sql_template_restriction_pagination': ''}}
 
@@ -227,7 +245,9 @@ class TsePessoaFisicaResourceService:
             self,
             origin_resource_path=None,            
             page_number=None,
-            page_size=None):
+            page_size=None,
+            pessoa_fisica_nome=None,
+            pessoa_fisica_nome_social=None):
 
         #
         connection = None
@@ -284,13 +304,17 @@ class TsePessoaFisicaResourceService:
                 '_links_self_page_number_next': page_number + 1,                 
                 'sql_template_select': sql_template_postgresql_select_json_object % { 
                 'sql_template_restriction_by_id': '',
+                'sql_template_restriction_by_pessoa_fisical_nome': sql_template_postgresql_restriction_by_pessoa_fisica_nome if (pessoa_fisica_nome is not None) else '',
+                'sql_template_restriction_by_pessoa_fisical_nome_social': sql_template_postgresql_restriction_by_pessoa_fisica_nome_social if (pessoa_fisica_nome_social is not None) else '',                
                 'sql_template_order': sql_template_postgresql_order_by_id, 
                 'sql_template_restriction_pagination': sql_template_postgresql_rescriction_pagination if ((page_number is not None) and (page_size is not None)) else ''}}
 
             #
             cursor.execute(sql_statement, {
                 'page_number': page_number,
-                'page_size': page_size})
+                'page_size': page_size,
+                'tse_pessoa_fisica_nome': pessoa_fisica_nome,
+                'tse_pessoa_fisica_nome_social': pessoa_fisica_nome_social})
 
             #
             result = cursor.fetchone()
