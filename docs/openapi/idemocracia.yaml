@@ -106,7 +106,7 @@ paths:
         - TSE / Fonte
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -139,7 +139,7 @@ paths:
         - TSE / País
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_pais_tse'
@@ -171,7 +171,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -189,7 +189,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -208,7 +208,7 @@ paths:
         - TSE / Unidade Federativa
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_unidade_federativa_tse'
@@ -240,7 +240,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -258,7 +258,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -277,7 +277,7 @@ paths:
         - TSE / Município
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_municipio_tse'
@@ -309,7 +309,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -327,7 +327,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -346,7 +346,9 @@ paths:
         - TSE / Pessoa Física
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'
+        - $ref: '#/components/parameters/PessoaFisicaNomeQueryParam'
+        - $ref: '#/components/parameters/PessoaFisicaNomeSocialQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_pessoa_fisica_tse'
@@ -378,7 +380,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -396,7 +398,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_pessoa_fisica_tse'
@@ -415,7 +417,7 @@ paths:
         - TSE / Partido
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_partido_tse'
@@ -447,7 +449,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -465,7 +467,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -484,7 +486,7 @@ paths:
         - TSE / Coligação Partidária
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_coligacao_partidaria_tse'
@@ -516,7 +518,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -534,7 +536,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -553,7 +555,7 @@ paths:
         - TSE / Cargo
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_cargo_tse'
@@ -585,7 +587,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -603,7 +605,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -622,7 +624,7 @@ paths:
         - TSE / Pleito Geral
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_pleito_geral_tse'
@@ -654,7 +656,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -672,7 +674,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -691,7 +693,7 @@ paths:
         - TSE / Pleito Regional
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_pleito_regional_tse'
@@ -723,7 +725,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -741,7 +743,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -760,7 +762,8 @@ paths:
         - TSE / Candidatura
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'    
+        - $ref: '#/components/parameters/CandidatoNomeUrnaQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_candidatura_tse'
@@ -792,7 +795,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_bem_tse'
@@ -810,7 +813,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -829,7 +832,7 @@ paths:
         - TSE / Bem
       parameters: 
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'      
+        - $ref: '#/components/parameters/PageSizeQueryParam'      
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_bem_tse'
@@ -861,7 +864,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/IdPathParam'
         - $ref: '#/components/parameters/PageNumberQueryParam'       
-        - $ref: '#/components/parameters/PageSizerQueryParam'
+        - $ref: '#/components/parameters/PageSizeQueryParam'
       responses:
         '200':
           $ref: '#/components/responses/200_paged_response_fonte_tse'
@@ -888,7 +891,7 @@ components:
         default: 1
 
     #
-    PageSizerQueryParam:
+    PageSizeQueryParam:
       name: page_size
       in: query
       description: Page Size
@@ -897,6 +900,33 @@ components:
         type: integer
         format: int32
         default: 100
+        
+    #
+    CandidatoNomeUrnaQueryParam:
+      name: candidato_nome_urna
+      in: query
+      description: Nome do candidato junto a urna
+      required: false
+      schema:
+        type: string
+        
+    #
+    PessoaFisicaNomeQueryParam:
+      name: pessoa_fisica_nome
+      in: query
+      description: Nome da pessoa física
+      required: false
+      schema:
+        type: string
+        
+    #
+    PessoaFisicaNomeSocialQueryParam:
+      name: pessoa_fisica_nome_social
+      in: query
+      description: Nome social da pessoa física
+      required: false
+      schema:
+        type: string        
 
     #
     IdPathParam:
