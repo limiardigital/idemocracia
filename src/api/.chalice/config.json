@@ -2,6 +2,7 @@
   "version": "2.0",
   "app_name": "api-idemocracia",
   "api_gateway_endpoint_type":"EDGE",
+  "automatic_layer": true,  
   "stages": {
     "local": {
       "environment_variables": {

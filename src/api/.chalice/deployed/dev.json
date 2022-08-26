@@ -1,6 +1,11 @@
 {
   "resources": [
     {
+      "name": "managed-layer",
+      "resource_type": "lambda_layer",
+      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:api-idemocracia-dev-managed-layer:10"
+    },
+    {
       "name": "default-role",
       "resource_type": "iam_role",
       "role_arn": "arn:aws:iam::624244441027:role/api-idemocracia-dev",
