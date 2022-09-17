@@ -82,7 +82,7 @@ def get_all():
 
             #
             query_param_page_number = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_NUMBER, False, 1, sys.maxsize, util_param.QUERY_PARAM_PAGE_NUMBER_DEFAULT_VALUE)
-            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, 100, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
+            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
             query_param_pessoa_fisica_nome = util_param.process_query_param_string(app.app.current_request.query_params, util_param.QUERY_PARAM_PESSOA_FISICA_NOME, False) 
             query_param_pessoa_fisica_nome_social = util_param.process_query_param_string(app.app.current_request.query_params, util_param.QUERY_PARAM_PESSOA_FISICA_NOME_SOCIAL, False) 
             
@@ -139,7 +139,7 @@ def get_all_candidatura(id):
 
             #
             query_param_page_number = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_NUMBER, False, 1, sys.maxsize, util_param.QUERY_PARAM_PAGE_NUMBER_DEFAULT_VALUE)
-            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, 100, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
+            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
 
         #
         except Exception as e:
@@ -193,7 +193,7 @@ def get_all_fonte(id):
 
             #
             query_param_page_number = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_NUMBER, False, 1, sys.maxsize, util_param.QUERY_PARAM_PAGE_NUMBER_DEFAULT_VALUE)
-            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, 100, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
+            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
 
         #
         except Exception as e:

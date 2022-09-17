@@ -94,7 +94,7 @@ def get_all():
 
             #
             query_param_page_number = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_NUMBER, False, 1, sys.maxsize, util_param.QUERY_PARAM_PAGE_NUMBER_DEFAULT_VALUE)
-            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, 100, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
+            query_param_page_size = util_param.process_query_param_integer(app.app.current_request.query_params, util_param.QUERY_PARAM_PAGE_SIZE, False, 1, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE, util_param.QUERY_PARAM_PAGE_SIZE_DEFAULT_VALUE) 
 
             #
             query_param_id_coligacao_partidaria = util_param.process_query_param_uuid(app.app.current_request.query_params, util_param.QUERY_PARAM_TSE_ID_COLIGACAO_PARTIDARIA, False) 
