@@ -3,7 +3,7 @@
     {
       "name": "managed-layer",
       "resource_type": "lambda_layer",
-      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:api-idemocracia-dev-managed-layer:12"
+      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:api-idemocracia-dev-managed-layer:14"
     },
     {
       "name": "default-role",
@@ -19,14 +19,14 @@
     {
       "name": "rest_api",
       "resource_type": "rest_api",
-      "rest_api_id": "pl83urjs59",
-      "rest_api_url": "https://pl83urjs59.execute-api.us-east-1.amazonaws.com/dev/"
+      "rest_api_id": "u7athasn9l",
+      "rest_api_url": "https://u7athasn9l.execute-api.us-east-1.amazonaws.com/dev/"
     },
     {
       "name": "api_gateway_custom_domain",
       "resource_type": "domain_name",
       "hosted_zone_id": "Z2FDTNDATAQYW2",
-      "alias_domain_name": "d385gqojol1tdd.cloudfront.net",
+      "alias_domain_name": "d3ue052ofwsng9.cloudfront.net",
       "certificate_arn": "arn:aws:acm:us-east-1:624244441027:certificate/4c54790f-1bc4-419e-a8a0-55725169c851",
       "security_policy": "TLS_1_2",
       "domain_name": "api.idemocracia.digital",
