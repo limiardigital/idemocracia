@@ -1,0 +1,1 @@
+chalice deploy --stage prod --profile limiar-digital

@@ -1,0 +1,1 @@
+chalice deploy --stage dev --profile limiar-digital

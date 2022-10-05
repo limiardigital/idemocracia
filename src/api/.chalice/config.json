@@ -32,6 +32,24 @@
         "DB_USER": "<USER>",
         "DB_PASSWORD": "<PASSWORD>"
       }
+    },
+    "prod": {
+      "autogen_policy": true,
+      "api_gateway_stage": "dev",
+      "api_gateway_custom_domain": {
+        "domain_name": "api.idemocracia.digital",
+        "security_policy": "TLS 1.2",
+        "certificate_arn": "<CERTIFICATE_ARN>"
+      },
+      "environment_variables": {
+        "API_URL": "https://api.idemocracia.digital",
+        "VERSION": "1.0.0",
+        "DB_HOST": "<HOST>",
+        "DB_PORT": "<PORT>",
+        "DB_NAME": "idemocracia",
+        "DB_USER": "<USER>",
+        "DB_PASSWORD": "<PASSWORD>"
+      }
     }
   }  
 }
