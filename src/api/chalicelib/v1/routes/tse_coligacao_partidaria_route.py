@@ -105,7 +105,7 @@ def get_all():
         else:
 
             #
-            return Response(body={'code' : 'not_found', 'message': id}, status_code=404, headers={'Content-Type': 'application/json'})
+            return Response(body={'code' : 'not_found', 'message': 'no records'}, status_code=404, headers={'Content-Type': 'application/json'})
 
     #
     except Exception as e:
