@@ -21,19 +21,19 @@ Considerando que a disponibilização de dados de públicos é feita de forma br
 
 **1 INTRODUÇÃO**
 
-`	`Atualmente, nos encontramos na era da informação, período pós-industrial, a partir da década de 70, na qual nossa sociedade está interligada e imersa em dados e informações, em muito devido a popularização dos microprocessadores, avanços em telecomunicações, e a miniaturização de componentes, possibilitando o acesso rápido e barato as mais diversas fontes e formas de informação em escala global, virtualmente a todos os habitantes do planeta de maneira ilimitada e ininterrupta (ROCHA, BASTOS, CARVALHO, 2020). 
+Atualmente, nos encontramos na era da informação, período pós-industrial, a partir da década de 70, na qual nossa sociedade está interligada e imersa em dados e informações, em muito devido a popularização dos microprocessadores, avanços em telecomunicações, e a miniaturização de componentes, possibilitando o acesso rápido e barato as mais diversas fontes e formas de informação em escala global, virtualmente a todos os habitantes do planeta de maneira ilimitada e ininterrupta (ROCHA, BASTOS, CARVALHO, 2020). 
 
-`	`Entretanto, tal facilidade de acesso aos dados e informações, por uma parcela significativa da população, não resultou de maneira equivalente em uma maior participação da mesma frente a gestão pública e a escolha de seus representantes. Embora tais informações encontrem-se em domínio público, são por muitas vezes descentralizadas e pouco claras, como exemplo podemos citar o PBDA[^2] e suas diversas fontes de dados não relacionadas.
+Entretanto, tal facilidade de acesso aos dados e informações, por uma parcela significativa da população, não resultou de maneira equivalente em uma maior participação da mesma frente a gestão pública e a escolha de seus representantes. Embora tais informações encontrem-se em domínio público, são por muitas vezes descentralizadas e pouco claras, como exemplo podemos citar o PBDA[^2] e suas diversas fontes de dados não relacionadas.
 
 Com o intuito de facilitar e aproximar a sociedade civil da gestão pública, por meio da unificação e relacionamento de seus dados, objetiva-se a construção de uma plataforma livre de fácil acesso e compreensão, por parte do cidadão comum por meio de portais ou aplicativos moveis, quer seja por jornalistas, acadêmicos ou pesquisadores através do acesso público a uma API (*Application Programming Interface*) ou Interface de Programação de Aplicativos, baseada no padrão REST (*Representational State Transfer*).
 
-`	`Sendo assim, optou-se pela abordagem *API-First Design Pattern* (VESTER, 2022), ou em tradução livre, padrão de projeto primeiramente API, no qual o foco é o desenvolvimento de produtos ou soluções a orbita de uma APIs desde sua concepção, possibilitando assim uma visão mais clara dos desafios a serem superados e objetivos a serem alcançados. 
+Sendo assim, optou-se pela abordagem *API-First Design Pattern* (VESTER, 2022), ou em tradução livre, padrão de projeto primeiramente API, no qual o foco é o desenvolvimento de produtos ou soluções a orbita de uma APIs desde sua concepção, possibilitando assim uma visão mais clara dos desafios a serem superados e objetivos a serem alcançados. 
 
-`	`Desta forma, o projeto utilizará somente uma fração das fontes de dados públicas disponíveis, para que sejam avaliadas as características e desafios técnicos, bem como a viabilidade e prototipação de sua arquitetura. Para tal, será utilizada uma fonte de dados estável e consolidada, o repositório de dados eleitorais relativo ao pleito de 2016, representando por si só, um grande desafio, uma vez que estes encontram-se em formatos e fontes de dados heterogêneas.
+Desta forma, o projeto utilizará somente uma fração das fontes de dados públicas disponíveis, para que sejam avaliadas as características e desafios técnicos, bem como a viabilidade e prototipação de sua arquitetura. Para tal, será utilizada uma fonte de dados estável e consolidada, o repositório de dados eleitorais relativo ao pleito de 2016, representando por si só, um grande desafio, uma vez que estes encontram-se em formatos e fontes de dados heterogêneas.
 
-`	`Neste sentido, o objetivo central do projeto, é o desenvolvimento de um produto de dados e sua arquitetura, para o acesso universal as informações relativas ao Estado Brasileiro, quer seja em seu âmbito federal, estadual ou municipal, a partir de um produto de dados, disseminando o acesso à informação.
+Neste sentido, o objetivo central do projeto, é o desenvolvimento de um produto de dados e sua arquitetura, para o acesso universal as informações relativas ao Estado Brasileiro, quer seja em seu âmbito federal, estadual ou municipal, a partir de um produto de dados, disseminando o acesso à informação.
 
-`	`Este artigo está estruturado da seguinte forma: a Seção 2 trata do desenvolvimento do estudo, as tecnologias utilizadas e como estão integradas a fim de se alcançar os objetivos deste projeto, bem como a modelagem das informações e refino dos dados brutos, e por fim, na Seção 3 são relatadas as considerações finais.
+Este artigo está estruturado da seguinte forma: a Seção 2 trata do desenvolvimento do estudo, as tecnologias utilizadas e como estão integradas a fim de se alcançar os objetivos deste projeto, bem como a modelagem das informações e refino dos dados brutos, e por fim, na Seção 3 são relatadas as considerações finais.
 
 **2 DESENVOLVIMENTO**
 
@@ -41,7 +41,7 @@ Para o desenvolvimento da aplicação será necessária uma arquitetura igualmen
 
 Os dados por sua vez são disponibilizados em sua forma bruta como arquivos compactados e/ou arquivos de texto, sendo necessário além de sua obtenção e extração, sua posterior transformação, para que seja possível realizar sua inserção junto a uma base de dados relacional devidamente modelada, que será efetivamente utilizada pela API REST. Processo este conhecido como ETL (*Extract, Transform and Load*), ou Extração, Transformação e Carga, utilizando uma linguagem de desenvolvimento de alto nível*.*
 
-`	`No que tange o armazenamento dos dados durante a elaboração da arquitetura da solução, optou-se por uma abordagem hibrida, onde uma vez os dados obtidos junto a fonte primária, estes ainda em sua forma bruta seriam preservados junto a um *Data Lake* ou lago de dados, sendo posteriormente utilizados como o principal insumo para os processos de ETL, e posterior composição de uma base de dados relacional. 
+No que tange o armazenamento dos dados durante a elaboração da arquitetura da solução, optou-se por uma abordagem hibrida, onde uma vez os dados obtidos junto a fonte primária, estes ainda em sua forma bruta seriam preservados junto a um *Data Lake* ou lago de dados, sendo posteriormente utilizados como o principal insumo para os processos de ETL, e posterior composição de uma base de dados relacional. 
 
 Uma vez que se pretende mais do que disponibilizar o mero acesso aos dados em um novo formato, busca-se descobrir e evidenciar as associações entre os entes envolvidos, acompanhar a evolução patrimonial de indivíduos, traçar correlações entre micro e macrorregiões, além de uma análise detalhada e categorizada dos investimentos em campanha, bem como demais inferências e conjecturas possíveis acerca do tema.
 
@@ -49,25 +49,25 @@ Uma vez que se pretende mais do que disponibilizar o mero acesso aos dados em um
 
 **	A obtenção dos dados brutos por si, não caracterizam o maior desafio do projeto, tendo em vista que tais dados são de domínio públicos e possuem fácil acesso por meio de ferramentas e soluções dedicadas aos processos de ETL, quer sejam estas comerciais ou *open source*, também conhecidas como programas de código aberto.
 
-`	`Entretanto, muitas vezes, tais soluções ao mesmo tempo em que possuem grande apelo visual e contam com diversos recursos gráficos que facilitam sua utilização por parte dos usuários podem também limitar o escopo da implementação de soluções de ETL robustas e distribuídas.
+Entretanto, muitas vezes, tais soluções ao mesmo tempo em que possuem grande apelo visual e contam com diversos recursos gráficos que facilitam sua utilização por parte dos usuários podem também limitar o escopo da implementação de soluções de ETL robustas e distribuídas.
 
 Muitas vezes não possuindo integração externa com outras soluções por meio de CLI (*Command Line Interface*), ou Interface de Linha de Comando, quando não, são desenvolvidas para funcionar exclusivamente junto a sistemas operacionais predeterminados como, por exemplo, as soluções SSIS (*SQL Server Integration Services*) e *Power BI* da *Microsoft* ou *Tableu* da *Tableu Software*, embora muitas destas possuam foco na visualização e análise de dados, por vezes também são utilizadas como ferramentas de ETL.
 **
-`	`Sendo assim, optou-se pelo desenvolvimento de um ETL próprio, se valendo da linguagem de desenvolvimento de código aberto *Python*, em sua versão 3.8, devido à sua aderência e características junto ao escopo deste projeto, dentre estas se destacam: simplicidade, boa expressividade, vasta documentação, multiplataforma, grande número de bibliotecas de propósito geral e dedicadas a análise e tratamento de grandes volumes de dados. 
+Sendo assim, optou-se pelo desenvolvimento de um ETL próprio, se valendo da linguagem de desenvolvimento de código aberto *Python*, em sua versão 3.8, devido à sua aderência e características junto ao escopo deste projeto, dentre estas se destacam: simplicidade, boa expressividade, vasta documentação, multiplataforma, grande número de bibliotecas de propósito geral e dedicadas a análise e tratamento de grandes volumes de dados. 
 
 Sendo adotada pela comunidade de *Big Data* e *Data Science* (DATACAMP, 2022), possuindo diversas bibliotecas e serviços que a suportam, dentre as utilizadas no projeto destacamos *Pandas* e *SQLAlchemy*.
 
-`	`Porém assim como uma matéria bruta que possui grande potencial, a depender somente do esforço empenhado em seu beneficiamento, assim é com o uso de uma linguagem de programação para o desenvolvimento de um processo de ETL, pois implica em um maior esforço, já que todas as etapas devem ser implementadas manualmente, reduzindo consideravelmente os ganhos obtidos quando se utilizam ferramentas gráficas que abstraem tais etapas deste processo.
+Porém assim como uma matéria bruta que possui grande potencial, a depender somente do esforço empenhado em seu beneficiamento, assim é com o uso de uma linguagem de programação para o desenvolvimento de um processo de ETL, pois implica em um maior esforço, já que todas as etapas devem ser implementadas manualmente, reduzindo consideravelmente os ganhos obtidos quando se utilizam ferramentas gráficas que abstraem tais etapas deste processo.
 
-`	`Por outro lado, são colhidos os benefícios de tal abordagem, uma vez que podem ser executadas operações extremamente refinadas sobre os dados coletados, até mesmo durante o processo de carga e ajustes quanto o volume dos dados a serem processados, podendo inclusive ser delegado a sistemas distribuídos sem grandes esforços.
+Por outro lado, são colhidos os benefícios de tal abordagem, uma vez que podem ser executadas operações extremamente refinadas sobre os dados coletados, até mesmo durante o processo de carga e ajustes quanto o volume dos dados a serem processados, podendo inclusive ser delegado a sistemas distribuídos sem grandes esforços.
 
 **2.2 Infraestrutura de nuvem**
 
-`	`A infraestrutura é um ponto crítico para o projeto, sendo assim, optou-se pela utilização dos serviços de PaaS (*Plataform as a Service*) ou Plataforma como Serviço, por meio do provedor *Amazon,* e sua suíte dedicada a este fim, denominada AWS (*Amazon Web Services*) (AWS, 2022).
+A infraestrutura é um ponto crítico para o projeto, sendo assim, optou-se pela utilização dos serviços de PaaS (*Plataform as a Service*) ou Plataforma como Serviço, por meio do provedor *Amazon,* e sua suíte dedicada a este fim, denominada AWS (*Amazon Web Services*) (AWS, 2022).
 
-`	`A escolha deste provedor se deu devido a sua ampla gama de serviços, vasta documentação, e cobertura mundial, contando com *data centers* em território nacional, potencializando assim seu alcance caso o projeto prospere.
+A escolha deste provedor se deu devido a sua ampla gama de serviços, vasta documentação, e cobertura mundial, contando com *data centers* em território nacional, potencializando assim seu alcance caso o projeto prospere.
 
-`	`Porém para uma melhor compreensão apresenta-se na Figura 1 a estrutura, bem como os serviços e componentes que serão utilizados no projeto, e seu papel junto à arquitetura de nuvem.
+Porém para uma melhor compreensão apresenta-se na Figura 1 a estrutura, bem como os serviços e componentes que serão utilizados no projeto, e seu papel junto à arquitetura de nuvem.
 
 Figura 1 – Diagrama de Arquitetura de Nuvem – AWS
 
@@ -75,7 +75,7 @@ Figura 1 – Diagrama de Arquitetura de Nuvem – AWS
 
 Fonte: Elaborada pelo autor
 
-`	`No Quadro 1, há o detalhamento (descrição e aplicação) das tecnologias utilizadas na implementação na arquitetura AWS.
+No Quadro 1, há o detalhamento (descrição e aplicação) das tecnologias utilizadas na implementação na arquitetura AWS.
 
 Quadro 1 – Tecnologias de Arquitetura de Nuvem – AWS
 
@@ -93,9 +93,9 @@ Fonte: Elaborada pelo autor
 
 **2.3 Arquitetura REST e RESTful**
 
-`	`O padrão REST (*Representational State Transfer*) ou transferência de estado representacional, foi proposto por Roy Fielding (FIELDING, 2000), é considerado um modelo de arquitetura de *software* para o desenvolvimento de interfaces de comunicação entre sistemas, utilizando o já estabelecido protocolo HTTP (*Hypertext Transfer Protocol*), baseando-se em seu conceito original de acesso a recursos por meio de URIs (*Uniform Resource Identifiers*) e ações por meio de suas operações ou verbos, como: *GET, HEAD, POST, PUT, PATCH, DELETE, CONNECT, OPTIONS* e *TRACE* (LIMA, 2020)*.*
+O padrão REST (*Representational State Transfer*) ou transferência de estado representacional, foi proposto por Roy Fielding (FIELDING, 2000), é considerado um modelo de arquitetura de *software* para o desenvolvimento de interfaces de comunicação entre sistemas, utilizando o já estabelecido protocolo HTTP (*Hypertext Transfer Protocol*), baseando-se em seu conceito original de acesso a recursos por meio de URIs (*Uniform Resource Identifiers*) e ações por meio de suas operações ou verbos, como: *GET, HEAD, POST, PUT, PATCH, DELETE, CONNECT, OPTIONS* e *TRACE* (LIMA, 2020)*.*
 
-`	`Entretanto a aderência ao modelo proposto não necessariamente implica na adoção de todos os seus 6 (seis) princípios, ou restrições arquitetônicas (IBM, 2022), embora seja recomendado ao menos a adoção de 5 (cinco) destes, para que uma API possa ser considerada RESTful (RESTFUL API, 2022), sendo eles:
+Entretanto a aderência ao modelo proposto não necessariamente implica na adoção de todos os seus 6 (seis) princípios, ou restrições arquitetônicas (IBM, 2022), embora seja recomendado ao menos a adoção de 5 (cinco) destes, para que uma API possa ser considerada RESTful (RESTFUL API, 2022), sendo eles:
 
 1. ***Uniform Interface*** (ou Interface Uniforme): Princípio no qual o acesso aos recursos deverá ser único, independentemente de onde os mesmos estiverem sendo requisitados, devendo conter em sua resposta todas as informações relevantes relativas ao recurso (IBM, 2022). Tal feito deve ser apresentado de forma parcimoniosa, ou seja, de maneira não tornar excessivo o trafego de dados, porém para contornar tal limitação recomenda-se o uso do mecanismo de hipermídia, por meio da implementação de HATEOAS (*Hypermedia as the Engine of Application State*), ou hipermídia como o mecanismo do estado do aplicativo (GUPTA, 2022);
 1. ***Client-Server*** (ou Cliente-Servidor): Princípio no qual deve-se haver uma separação clara entre os dois entes de maneira tal, permitir a evolução independente de cada qual, sendo somente a comunicação estabelecida por meio de acesso aos recursos através de URIs (IBM, 2022);
@@ -110,13 +110,13 @@ Quanto ao projeto foram aplicados os 5 (cinco) princípios inicialmente descrito
 
 **	O OPEN API, também conhecido como especificação Swagger, atualmente em sua versão 3 (três), é um padrão internacional mantido pela *OpenAPI Initiative*, instituto dedicado a disponibilizar um formato comum para documentação e descrição de APIs e seus serviços, de maneira agnóstica, ou seja, sem dependência a fornecedores ou agentes externos (OPEN API, 2022). 
 
-`	`Utilizando de linguagem JSON (*JavaScript Object Notation*) ou YAML (Yet Another Markup Language), é possível descrever de maneira clara e objetiva, todos os recursos e serviços disponibilizados pela mesma, possibilitando a integração com diversos provedores de serviços de computação em nuvem, dentre eles a AWS e o serviço *Amazon API Gateway***.**
+Utilizando de linguagem JSON (*JavaScript Object Notation*) ou YAML (Yet Another Markup Language), é possível descrever de maneira clara e objetiva, todos os recursos e serviços disponibilizados pela mesma, possibilitando a integração com diversos provedores de serviços de computação em nuvem, dentre eles a AWS e o serviço *Amazon API Gateway***.**
 
 **2.5 Mecanismo HATEOAS e HAL**
 
 **	O conceito do mecanismo de HATEAOS, é uma etapa essencial para se prover expressividade a uma API, ou seja, disponibilizar informações e documentação dinâmica ao cliente, o qual poderá navegar por dentre as funcionalidades diretamente fornecidas pelos recursos, sem a necessidade explicita de documentação adicional (GUPTA, 2021).
 
-`	`Entretanto existem diversas possibilidades para sua implementação, dentre as quais destacamos a HAL (*Hypertext Application Language*), ou linguagem de aplicação de hipertexto, que tem por objetivo fornecer uma convenção simplificada e direta para declaração de hiperlinks através de arquivos ou respostas em formato JSON ou XML (*Extensible Markup Language*) (KELLY, 2013).
+Entretanto existem diversas possibilidades para sua implementação, dentre as quais destacamos a HAL (*Hypertext Application Language*), ou linguagem de aplicação de hipertexto, que tem por objetivo fornecer uma convenção simplificada e direta para declaração de hiperlinks através de arquivos ou respostas em formato JSON ou XML (*Extensible Markup Language*) (KELLY, 2013).
 
 É esperado com a adoção do formato HAL, uma comunicação simplificada e clara entre os agentes produtores e consumidores de nossa API RESTful, uma vez que por meio de atributos e hiperlinks será possível explorar suas funcionalidades, assim como seus sub-recursos associados.
 
@@ -164,13 +164,13 @@ Figura 5 – Aplicação função – tratamento\_data\_frame (\_script\_candida
 
 Fonte: Elaborada pelo autor
 
-`	`Desta forma o script ETL conta com cerca de 1667 (um mil e seiscentos e sessenta e sete) linhas, disponível junto ao repositório público do projeto[^6], sendo dividido em 5 (cinco) grandes segmentos lógicos, os quais fazem o processamento sequencial dos 5 (cinco) conjuntos de dados inicialmente elencados e obtidos junto ao TSE e agora preservados em um *data lake*, sendo eles: Coligações, Candidatos, Bens de Candidatos, Motivos de Cassação e Vagas.
+Desta forma o script ETL conta com cerca de 1667 (um mil e seiscentos e sessenta e sete) linhas, disponível junto ao repositório público do projeto[^6], sendo dividido em 5 (cinco) grandes segmentos lógicos, os quais fazem o processamento sequencial dos 5 (cinco) conjuntos de dados inicialmente elencados e obtidos junto ao TSE e agora preservados em um *data lake*, sendo eles: Coligações, Candidatos, Bens de Candidatos, Motivos de Cassação e Vagas.
 
 **2.7 Desenvolvimento e documentação da API RESTful**
 
 Concluídas as etapas de análise, modelagem e ETL, deu-se início à última etapa do projeto, sendo o desenvolvimento e documentação da API RESTful. Para essa etapa foi escolhida a arquitetura de microsserviços baseada no serviço *AWS Lambda*, por meio do framework de desenvolvimento *AWS Chalice*, sendo este selecionado devido a sua integração junto aos serviços da AWS bem como sua linguagem de desenvolvimento, também baseado em *Python*.
 
-`	`O projeto foi desenvolvido sob o diretório “/src/api” o qual possui sua estrutura disposta da seguinte forma (Figura 6).
+O projeto foi desenvolvido sob o diretório “/src/api” o qual possui sua estrutura disposta da seguinte forma (Figura 6).
 
 Figura 6 – Estrutura base projeto – AWS Chalice
 
@@ -246,11 +246,11 @@ Além disso, também foi desenvolvido também um repositório público para o pr
 
 **	Este artigo teve como objetivo realizar a proposição de arquitetura para o desenvolvimento de um produto de dados e seus principais elementos, desafios e soluções, o qual foi obtido êxito por meio da publicação do projeto “iDEMOCRACIA”, sob uma licença de código aberto, possibilitando agregar fontes de dados públicas diversas, distribuídas em formatos heterogêneos.
 
-`	`Sendo este último ponto, o maior desafio do projeto, já que a diversidade de formatos implica na elaboração de processos de ETLs únicos para cada fonte de dados, sendo necessário um grande esforço de análise e desenvolvimento, já que estes não podem ser reutilizados, pois o contexto de cada qual está intrinsicamente relacionado a sua origem, formato e meio de publicação.
+Sendo este último ponto, o maior desafio do projeto, já que a diversidade de formatos implica na elaboração de processos de ETLs únicos para cada fonte de dados, sendo necessário um grande esforço de análise e desenvolvimento, já que estes não podem ser reutilizados, pois o contexto de cada qual está intrinsicamente relacionado a sua origem, formato e meio de publicação.
 
 Embora tal cenário fosse esperado, por se tratar de uma solução baseada em *Big Data*, e mesmo que seu objetivo primário tenha sido alcançado, ainda resta como perspectiva futura agregar o máximo de fontes de dados públicos providas pelo Estado brasileiro, bem como fomentar o desenvolvimento de soluções derivadas ou baseadas sob estes princípios, democratizando o acesso a informação a todos os brasileiros, para que possam tomar suas decisões de maneira clara e consciente.
 
-`	`Por este motivo se fazem ainda mais necessárias iniciativas como as do projeto “iDEMOCRACIA”, coletando, preservando e divulgando informações de interesse público, de maneira isonômica e apartidária. 
+Por este motivo se fazem ainda mais necessárias iniciativas como as do projeto “iDEMOCRACIA”, coletando, preservando e divulgando informações de interesse público, de maneira isonômica e apartidária. 
 
 **REFERÊNCIAS**
 
