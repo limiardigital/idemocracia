@@ -47,12 +47,12 @@ Uma vez que se pretende mais do que disponibilizar o mero acesso aos dados em um
 
 **2.1 Ferramentas de ETL**
 
-**	A obtenção dos dados brutos por si, não caracterizam o maior desafio do projeto, tendo em vista que tais dados são de domínio públicos e possuem fácil acesso por meio de ferramentas e soluções dedicadas aos processos de ETL, quer sejam estas comerciais ou *open source*, também conhecidas como programas de código aberto.
+A obtenção dos dados brutos por si, não caracterizam o maior desafio do projeto, tendo em vista que tais dados são de domínio públicos e possuem fácil acesso por meio de ferramentas e soluções dedicadas aos processos de ETL, quer sejam estas comerciais ou *open source*, também conhecidas como programas de código aberto.
 
 Entretanto, muitas vezes, tais soluções ao mesmo tempo em que possuem grande apelo visual e contam com diversos recursos gráficos que facilitam sua utilização por parte dos usuários podem também limitar o escopo da implementação de soluções de ETL robustas e distribuídas.
 
 Muitas vezes não possuindo integração externa com outras soluções por meio de CLI (*Command Line Interface*), ou Interface de Linha de Comando, quando não, são desenvolvidas para funcionar exclusivamente junto a sistemas operacionais predeterminados como, por exemplo, as soluções SSIS (*SQL Server Integration Services*) e *Power BI* da *Microsoft* ou *Tableu* da *Tableu Software*, embora muitas destas possuam foco na visualização e análise de dados, por vezes também são utilizadas como ferramentas de ETL.
-**
+
 Sendo assim, optou-se pelo desenvolvimento de um ETL próprio, se valendo da linguagem de desenvolvimento de código aberto *Python*, em sua versão 3.8, devido à sua aderência e características junto ao escopo deste projeto, dentre estas se destacam: simplicidade, boa expressividade, vasta documentação, multiplataforma, grande número de bibliotecas de propósito geral e dedicadas a análise e tratamento de grandes volumes de dados. 
 
 Sendo adotada pela comunidade de *Big Data* e *Data Science* (DATACAMP, 2022), possuindo diversas bibliotecas e serviços que a suportam, dentre as utilizadas no projeto destacamos *Pandas* e *SQLAlchemy*.
