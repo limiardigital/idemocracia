@@ -69,7 +69,9 @@ Sendo adotada pela comunidade de *Big Data* e *Data Science* (DATACAMP, 2022), p
 
 `	`Porém para uma melhor compreensão apresenta-se na Figura 1 a estrutura, bem como os serviços e componentes que serão utilizados no projeto, e seu papel junto à arquitetura de nuvem.
 
-Figura 1 – Diagrama de Arquitetura de Nuvem – AWS![](https://idemocracia.s3.amazonaws.com/public/github/001.png)
+Figura 1 – Diagrama de Arquitetura de Nuvem – AWS
+
+![](https://idemocracia.s3.amazonaws.com/public/github/001.png)
 
 Fonte: Elaborada pelo autor
 
