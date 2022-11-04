@@ -114,7 +114,7 @@ Utilizando de linguagem JSON (*JavaScript Object Notation*) ou YAML (Yet Another
 
 **2.5 Mecanismo HATEOAS e HAL**
 
-**	O conceito do mecanismo de HATEAOS, é uma etapa essencial para se prover expressividade a uma API, ou seja, disponibilizar informações e documentação dinâmica ao cliente, o qual poderá navegar por dentre as funcionalidades diretamente fornecidas pelos recursos, sem a necessidade explicita de documentação adicional (GUPTA, 2021).
+O conceito do mecanismo de HATEAOS, é uma etapa essencial para se prover expressividade a uma API, ou seja, disponibilizar informações e documentação dinâmica ao cliente, o qual poderá navegar por dentre as funcionalidades diretamente fornecidas pelos recursos, sem a necessidade explicita de documentação adicional (GUPTA, 2021).
 
 Entretanto existem diversas possibilidades para sua implementação, dentre as quais destacamos a HAL (*Hypertext Application Language*), ou linguagem de aplicação de hipertexto, que tem por objetivo fornecer uma convenção simplificada e direta para declaração de hiperlinks através de arquivos ou respostas em formato JSON ou XML (*Extensible Markup Language*) (KELLY, 2013).
 
@@ -244,7 +244,7 @@ Além disso, também foi desenvolvido também um repositório público para o pr
 
 **3 CONSIDERAÇÕES FINAIS**
 
-**	Este artigo teve como objetivo realizar a proposição de arquitetura para o desenvolvimento de um produto de dados e seus principais elementos, desafios e soluções, o qual foi obtido êxito por meio da publicação do projeto “iDEMOCRACIA”, sob uma licença de código aberto, possibilitando agregar fontes de dados públicas diversas, distribuídas em formatos heterogêneos.
+Este artigo teve como objetivo realizar a proposição de arquitetura para o desenvolvimento de um produto de dados e seus principais elementos, desafios e soluções, o qual foi obtido êxito por meio da publicação do projeto “iDEMOCRACIA”, sob uma licença de código aberto, possibilitando agregar fontes de dados públicas diversas, distribuídas em formatos heterogêneos.
 
 Sendo este último ponto, o maior desafio do projeto, já que a diversidade de formatos implica na elaboração de processos de ETLs únicos para cada fonte de dados, sendo necessário um grande esforço de análise e desenvolvimento, já que estes não podem ser reutilizados, pois o contexto de cada qual está intrinsicamente relacionado a sua origem, formato e meio de publicação.
 
