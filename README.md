@@ -108,9 +108,9 @@ Quanto ao projeto foram aplicados os 5 (cinco) princípios inicialmente descrito
 
 **2.4 Especificação OPEN API ou Swagger**
 
-**	O OPEN API, também conhecido como especificação Swagger, atualmente em sua versão 3 (três), é um padrão internacional mantido pela *OpenAPI Initiative*, instituto dedicado a disponibilizar um formato comum para documentação e descrição de APIs e seus serviços, de maneira agnóstica, ou seja, sem dependência a fornecedores ou agentes externos (OPEN API, 2022). 
+O OPEN API, também conhecido como especificação Swagger, atualmente em sua versão 3 (três), é um padrão internacional mantido pela *OpenAPI Initiative*, instituto dedicado a disponibilizar um formato comum para documentação e descrição de APIs e seus serviços, de maneira agnóstica, ou seja, sem dependência a fornecedores ou agentes externos (OPEN API, 2022). 
 
-Utilizando de linguagem JSON (*JavaScript Object Notation*) ou YAML (Yet Another Markup Language), é possível descrever de maneira clara e objetiva, todos os recursos e serviços disponibilizados pela mesma, possibilitando a integração com diversos provedores de serviços de computação em nuvem, dentre eles a AWS e o serviço *Amazon API Gateway***.**
+Utilizando de linguagem JSON (*JavaScript Object Notation*) ou YAML (Yet Another Markup Language), é possível descrever de maneira clara e objetiva, todos os recursos e serviços disponibilizados pela mesma, possibilitando a integração com diversos provedores de serviços de computação em nuvem, dentre eles a AWS e o serviço *Amazon API Gateway*.
 
 **2.5 Mecanismo HATEOAS e HAL**
 
