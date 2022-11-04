@@ -236,7 +236,9 @@ Os mesmos princípios se aplicam aos demais 12 (doze) recursos desenvolvidos jun
 
 Desta forma optou-se pela utilização do padrão *OPEN API* em sua versão 3 (três) para composição de tal documentação, em conjunto a ferramenta *SWAGGER HUB* para publicação, exposição e disponibilização de um ambiente de testes seguro (Figura 9), acessível por um endereço eletrônico[^7].
 
-Figura 9 – Documentação OPEN API e SWAGGER HUB ![](https://idemocracia.s3.amazonaws.com/public/github/009.png)
+Figura 9 – Documentação OPEN API e SWAGGER HUB 
+
+![](https://idemocracia.s3.amazonaws.com/public/github/009.png)
 
 Fonte: Elaborada pelo autor
 
