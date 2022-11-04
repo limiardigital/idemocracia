@@ -9,6 +9,10 @@
 
 --
 
+[ARTIGO](https://idemocracia.s3.amazonaws.com/public/github/artigo-tcc-joao-paulo-silva-simoes.pdf "ARTIGO")
+
+--
+
 **Arquitetura e desenvolvimento de um produto de dados com informações de candidatos a cargos públicos: “iDEMOCRACIA”**
 
 **João Paulo Silva Simões[^1]**
