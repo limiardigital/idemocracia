@@ -69,7 +69,7 @@ Sendo adotada pela comunidade de *Big Data* e *Data Science* (DATACAMP, 2022), p
 
 `	`Porém para uma melhor compreensão apresenta-se na Figura 1 a estrutura, bem como os serviços e componentes que serão utilizados no projeto, e seu papel junto à arquitetura de nuvem.
 
-Figura 1 – Diagrama de Arquitetura de Nuvem – AWS![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.001.png)
+Figura 1 – Diagrama de Arquitetura de Nuvem – AWS![](https://idemocracia.s3.amazonaws.com/public/github/001.png)
 
 Fonte: Elaborada pelo autor
 
@@ -126,7 +126,7 @@ Desta forma chegou-se a 7 (sete) categorias, conjuntos de dados, ou datasets que
 
 Figura 2 – Repositório de Dados Públicos - Pleito 2016
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.002.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/002.png)
 
 Fonte: TSE
 
@@ -134,7 +134,7 @@ O formato dos dados originalmente encontrava-se junto a arquivos compactados, se
 
 Figura 3 – *Data Lake* – *AWS* - Pleito 2016
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.003.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/003.png)
 
 Fonte: Elaborada pelo autor
 
@@ -152,13 +152,13 @@ Durante o processo de análise dos dados brutos, também foram identificadas div
 
 Figura 4 - Função – tratamento\_data\_frame (\_script\_candidaturas.py)
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.004.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/004.png)
 
 Fonte: Elaborada pelo autor
 
 Figura 5 – Aplicação função – tratamento\_data\_frame (\_script\_candidaturas.py)
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.005.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/005.png)
 
 Fonte: Elaborada pelo autor
 
@@ -172,7 +172,7 @@ Concluídas as etapas de análise, modelagem e ETL, deu-se início à última et
 
 Figura 6 – Estrutura base projeto – AWS Chalice
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.006.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/006.png)
 
 Fonte: Elaborada pelo autor
 
@@ -212,7 +212,7 @@ Assim sendo, a camada denominada “*v1/routes*” (Figura 7), possui os arquivo
 
 Figura 7 - “v1/routes” do projeto - AWS Chalice
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.007.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/007.png)
 
 Fonte: Elaborada pelo autor
 
@@ -220,7 +220,7 @@ Uma vez realizada a requisição HTTP junto ao recurso e seu pré-processamento 
 
 Figura 8 - “services” do projeto - AWS Chalice
 
-![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.008.png)
+![](https://idemocracia.s3.amazonaws.com/public/github/008.png)
 
 Fonte: Elaborada pelo autor
 
@@ -234,7 +234,7 @@ Os mesmos princípios se aplicam aos demais 12 (doze) recursos desenvolvidos jun
 
 Desta forma optou-se pela utilização do padrão *OPEN API* em sua versão 3 (três) para composição de tal documentação, em conjunto a ferramenta *SWAGGER HUB* para publicação, exposição e disponibilização de um ambiente de testes seguro (Figura 9), acessível por um endereço eletrônico[^7].
 
-Figura 9 – Documentação OPEN API e SWAGGER HUB ![](Aspose.Words.6f3b2270-df53-417f-9450-769d063d8acd.009.png)
+Figura 9 – Documentação OPEN API e SWAGGER HUB ![](https://idemocracia.s3.amazonaws.com/public/github/009.png)
 
 Fonte: Elaborada pelo autor
 
