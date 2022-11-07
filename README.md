@@ -236,7 +236,7 @@ Sob a mesma ótica foi implementada também por meio de funções nativas ao SGD
 
 Os mesmos princípios se aplicam aos demais 12 (doze) recursos desenvolvidos junto ao projeto *AWS Chalice*, sendo realizado posteriormente sua publicação junto à plataforma AWS e seus demais pormenores e configurações realizadas de maneira que seja possível o acesso aos usuários a todos os serviços e recursos disponibilizados pela API RESTful.
 
-` `Em última instância é necessário o desenvolvimento de sua documentação para os usuários finais, os quais farão uso efetivo das informações e devem possuir uma interface de fácil acesso e clara compreensão, assim como todas as possibilidades disponibilizados pela API.
+Em última instância é necessário o desenvolvimento de sua documentação para os usuários finais, os quais farão uso efetivo das informações e devem possuir uma interface de fácil acesso e clara compreensão, assim como todas as possibilidades disponibilizados pela API.
 
 Desta forma optou-se pela utilização do padrão *OPEN API* em sua versão 3 (três) para composição de tal documentação, em conjunto a ferramenta *SWAGGER HUB* para publicação, exposição e disponibilização de um ambiente de testes seguro (Figura 9), acessível por um endereço eletrônico[^7].
 
