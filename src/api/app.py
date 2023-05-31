@@ -25,7 +25,7 @@ import os
 DATABASE_CONNECTION_URL = 'host=%(host)s port=%(port)s dbname=%(dbname)s user=%(user)s password=%(password)s' % {'host': os.environ["DB_HOST"], 'port': os.environ["DB_PORT"], 'dbname': os.environ["DB_NAME"], 'user': os.environ["DB_USER"], 'password': os.environ["DB_PASSWORD"]}
 
 #
-app = Chalice(app_name='api-idemocracia')
+app = Chalice(app_name=os.environ["APP_NAME"])
 
 # V1
 

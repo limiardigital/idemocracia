@@ -3,24 +3,24 @@
     {
       "name": "managed-layer",
       "resource_type": "lambda_layer",
-      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:idemocracia-api-dev-managed-layer:3"
+      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:idemocracia-api-prod-managed-layer:1"
     },
     {
       "name": "default-role",
       "resource_type": "iam_role",
-      "role_arn": "arn:aws:iam::624244441027:role/idemocracia-api-dev",
-      "role_name": "idemocracia-api-dev"
+      "role_arn": "arn:aws:iam::624244441027:role/idemocracia-api-prod",
+      "role_name": "idemocracia-api-prod"
     },
     {
       "name": "api_handler",
       "resource_type": "lambda_function",
-      "lambda_arn": "arn:aws:lambda:us-east-1:624244441027:function:idemocracia-api-dev"
+      "lambda_arn": "arn:aws:lambda:us-east-1:624244441027:function:idemocracia-api-prod"
     },
     {
       "name": "rest_api",
       "resource_type": "rest_api",
-      "rest_api_id": "vgwryeubw3",
-      "rest_api_url": "https://vgwryeubw3.execute-api.us-east-1.amazonaws.com/dev/"
+      "rest_api_id": "c2r2hnrmmh",
+      "rest_api_url": "https://c2r2hnrmmh.execute-api.us-east-1.amazonaws.com/prod/"
     },
     {
       "name": "api_gateway_custom_domain",
@@ -32,7 +32,7 @@
       "domain_name": "api.idemocracia.digital",
       "api_mapping": [
         {
-          "key": "/dev"
+          "key": "/prod"
         }
       ]
     }
