@@ -86,7 +86,7 @@ Quadro 1 – Tecnologias de Arquitetura de Nuvem – AWS
 |<p>**Segmento**</p><p>Tecnologia</p>|**Descrição**|**Aplicação**|
 | :-: | :-: | :-: |
 |<p>**Armazenamento**</p><p>AWS S3</p>|O *AWS S3* (*Simple Storage Service*) é o serviço de armazenamento de arquivos provido pela AWS, capaz de armazenar grandes volumes de dados em uma estrutura simplificada e distribuída, organizada em *buckets* ou baldes que são análogos a pastas (AWS S3, 2022).|Tal serviço possibilitará armazenar os dados brutos coletados junto a nossas fontes de dados, que atuará como *Data Lake* em nosso projeto, em uma etapa intermediaria, também conhecida como *Staging Area*, conceito este proveniente da arquitetura de DW (*Data Warehouse*) e BI (*Business Inteligence*).|
-|<p>**Rede**</p><p>AWS Route 53</p>|O AWS Route 53 é o serviço de DNS (*Domain Name System*) ou sistema de nome de domínios, responsável por resolver ou traduzir os nomes de endereço digitados em endereços IP (*Internet Protocol*), o serviço organiza os domínios por meio de *hosted zones* ou zonas hospedada (AWS ROUTE 53, 2022).|Tal serviço possibilitará a resolução das requisições realizadas junto ao domínio escolhido ([https://api.idemocracia.digital](https://api.idemocracia.digital/)) e seu correto encaminhamento aos serviços desejados, visando mitigar os riscos relacionados à utilização de endereços IPs, tendo em vistas que estes endereços são voláteis e quando modificados podem acarretar na quebra de compatibilidade das chamadas à API, resultando em um grande esforço para refatoração de códigos fontes preexistentes, atualização de documentação técnica, bem como uma série de outros riscos não elencados, que podem ser mitigados com sua simples adoção.|
+|<p>**Rede**</p><p>AWS Route 53</p>|O AWS Route 53 é o serviço de DNS (*Domain Name System*) ou sistema de nome de domínios, responsável por resolver ou traduzir os nomes de endereço digitados em endereços IP (*Internet Protocol*), o serviço organiza os domínios por meio de *hosted zones* ou zonas hospedada (AWS ROUTE 53, 2022).|Tal serviço possibilitará a resolução das requisições realizadas junto ao domínio escolhido ([https://api.idemocracia.digital](https://api.idemocracia.digital/dev/)) e seu correto encaminhamento aos serviços desejados, visando mitigar os riscos relacionados à utilização de endereços IPs, tendo em vistas que estes endereços são voláteis e quando modificados podem acarretar na quebra de compatibilidade das chamadas à API, resultando em um grande esforço para refatoração de códigos fontes preexistentes, atualização de documentação técnica, bem como uma série de outros riscos não elencados, que podem ser mitigados com sua simples adoção.|
 |<p>**Computação**</p><p>AWS EC2</p>|O AWS EC2 (*Elastic Compute Cloud*) é o serviço de processamento computacional, no qual é possível realizar a configuração, iniciação, redimensionamento, escalonamento e monitoramento de servidores e sua infraestrutura, de maneira simplificada e unificada. O serviço organiza tais recursos por meio de *instances* ou instâncias, que são análogos a equipamentos físicos (AWS EC2, 2022).|Tal serviço possibilitará a solução alocar a capacidade computacional necessária para realização dos processos de ETL de maneira segura e isolada, sem que sejam comprometidos os demais recursos, componentes e serviços de nossa arquitetura, uma vez que estes estarão alocados e dedicados ao armazenamento e gestão do banco de dados relacional, disponibilização da API pública, análise e visualização das informações, bem como as demais funcionalidades.|
 |<p>**Rede**</p><p>AWS ALB</p>|O AWS ALB (*Application Load Balancer*) é o serviço para centralização, recebimento e encaminhamento de requisições aos serviços fornecidos, possibilitando assim uma interface comum para acesso o externo. Garantindo ao produto um maior nível de segurança, uma vez que tal recurso promove o isolamento da infraestrutura interna, impossibilitando o acesso direto aos servidores ou seus endereços IPs, mitigando em grande parte potenciais ataques do tipo DDoS (*Distributed Denial of Service*) ou ataque distribuído de negação de serviço, implementando em um único ponto uma camada segura de comunicação, por meio do protocolo HTTPS (*Hyper Text Protocol Secure*) (AWS ALB, 2022).|Tal serviço possibilitará a aplicação ser integrada junto ao sistema de nome de domínios utilizado, no caso concreto o Route 53, onde todas as requisições realizadas ao serviço serão encaminhadas ao ALB, que terá como funções: isolar a infraestrutura interna, provendo um canal de comunicação seguro por meio do protocolo HTTPS e realizar o balanceamento de carga e alocação de recursos computacionais conforme o aumento do número de usuários e acesso a seus serviços.|
 |<p>**Rede**</p><p>AWS API Gateway</p>|O AWS API Gateway é o serviço dedicado a gestão e controle de APIs, fornecendo uma vasta gama de funcionalidades para sua criação, documentação, manutenção, publicação, cache e escalonamento, permitindo monitorar o acesso a todos os recursos disponibilizados, bem como a possibilidade de definição de cotas de uso ou revogação de privilégios (AWS API GATEWAY, 2022).|<p>Tal serviço fornecerá acesso seguro a todos os usuários que venham a requisitar acesso aos serviços fornecidos por nossa API REST, e que estas requisições por sua vez sejam corretamente distribuídas em uma arquitetura resiliente e escalável baseada em *microservices*, ou microsserviços. </p><p></p>|
@@ -190,23 +190,23 @@ Quadro 2 – Relação de Recursos e Entidades
 
 |<p>**ERD**</p><p>**Esquema / Tabela ou Entidade**</p>|**Recurso API**|
 | :-: | :-: |
-|tse / pessoa\_fisica|<https://api.idemocracia.digital/v1/tse/pessoasFisicas>|
-|tse / candidatura|<https://api.idemocracia.digital/v1/tse/candidaturas>|
-|tse / candidatura\_bem|<https://api.idemocracia.digital/v1/tse/bens>|
+|tse / pessoa\_fisica|<https://api.idemocracia.digital/dev/v1/tse/pessoasFisicas>|
+|tse / candidatura|<https://api.idemocracia.digital/dev/v1/tse/candidaturas>|
+|tse / candidatura\_bem|<https://api.idemocracia.digital/dev/v1/tse/bens>|
 |tse / candidatura\_motivo\_cassacao|Não se aplica, informação complementar ao recurso “candidaturas”|
-|tse / cargo|<https://api.idemocracia.digital/v1/tse/cargos>|
-|tse / partido|<https://api.idemocracia.digital/v1/tse/partidos>|
-|tse / coligacao\_partidaria|<https://api.idemocracia.digital/v1/tse/coligacoesPartidarias>|
+|tse / cargo|<https://api.idemocracia.digital/dev/v1/tse/cargos>|
+|tse / partido|<https://api.idemocracia.digital/dev/v1/tse/partidos>|
+|tse / coligacao\_partidaria|<https://api.idemocracia.digital/dev/v1/tse/coligacoesPartidarias>|
 |tse / coligacao\_partidaria\_partido|Não se aplica, informação complementar aos recursos “partidos” e “coligacoesPartidarias”|
 |tse / motivo\_cassacao|Não se aplica, informação complementar ao recurso “candidaturas”|
-|tse / pleito\_regional|<https://api.idemocracia.digital/v1/tse/pleitosRegionais>|
+|tse / pleito\_regional|<https://api.idemocracia.digital/dev/v1/tse/pleitosRegionais>|
 |tse / pleito\_regional\_cargo|Não se aplica, informação complementar aos recursos “pleitosRegionais” e “cargos”|
-|tse / pleito\_geral|<https://api.idemocracia.digital/v1/tse/pleitosGerais>|
+|tse / pleito\_geral|<https://api.idemocracia.digital/dev/v1/tse/pleitosGerais>|
 |tse / pleito\_geral\_cargo|Não se aplica, informação complementar aos recursos “pleitosGerais” e “cargos”|
-|tse / pais|<https://api.idemocracia.digital/v1/tse/paises>|
-|tse / unidade\_federativa|<https://api.idemocracia.digital/v1/tse/unidadesFederativas>|
-|tse / municipio|<https://api.idemocracia.digital/v1/tse/municipios>|
-|tse / fonte|<https://api.idemocracia.digital/v1/tse/fontes>|
+|tse / pais|<https://api.idemocracia.digital/dev/v1/tse/paises>|
+|tse / unidade\_federativa|<https://api.idemocracia.digital/dev/v1/tse/unidadesFederativas>|
+|tse / municipio|<https://api.idemocracia.digital/dev/v1/tse/municipios>|
+|tse / fonte|<https://api.idemocracia.digital/dev/v1/tse/fontes>|
 |tse / fonte\_referencia|Não se aplica, informação complementar ao recurso “fontes”|
 Fonte: Elaborada pelo autor
 
