@@ -7,6 +7,7 @@
     "local": {
       "environment_variables": {
         "APP_NAME": "idemocracia-api-local",
+        "API_URL_ROOT": "http://127.0.0.1:8000",
         "API_URL": "http://127.0.0.1:8000",
         "VERSION": "1.0.0",
         "DB_HOST": "127.0.0.1",
@@ -27,6 +28,7 @@
       },
       "environment_variables": {
         "APP_NAME": "idemocracia-api-dev",
+        "API_URL_ROOT": "https://api.idemocracia.digital",
         "API_URL": "https://api.idemocracia.digital/dev",
         "VERSION": "1.0.0",
         "DB_HOST": "<HOST>",
@@ -47,6 +49,7 @@
       },
       "environment_variables": {
         "APP_NAME": "idemocracia-api-prod",
+        "API_URL_ROOT": "https://api.idemocracia.digital",
         "API_URL": "https://api.idemocracia.digital/prod",
         "VERSION": "1.0.0",
         "DB_HOST": "<HOST>",
