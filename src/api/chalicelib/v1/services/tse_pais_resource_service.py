@@ -199,7 +199,7 @@ class TsePaisResourceService:
             """  % {
                 'page_number': page_number,
                 'page_size': page_size,
-                '_links_self': (RESOURCE_URL if origin_resource_path is None else '%(url)s%(resource)s' % {'url': os.environ["API_URL"], 'resource': origin_resource_path}),
+                '_links_self': (RESOURCE_URL if origin_resource_path is None else '%(url)s%(resource)s' % {'url': os.environ["API_URL_ROOT"], 'resource': origin_resource_path}),
                 '_links_self_page_size': page_size,
                 '_links_self_page_number': page_number,
                 '_links_self_page_number_previous': (page_number - 1 if (page_number - 1) > 0 else 1),

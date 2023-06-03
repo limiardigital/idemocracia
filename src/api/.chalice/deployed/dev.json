@@ -3,7 +3,7 @@
     {
       "name": "managed-layer",
       "resource_type": "lambda_layer",
-      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:idemocracia-api-dev-managed-layer:3"
+      "layer_version_arn": "arn:aws:lambda:us-east-1:624244441027:layer:idemocracia-api-dev-managed-layer:5"
     },
     {
       "name": "default-role",
